@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Scala入门学习笔记一 -- List | 超级无敌美少女Kitty的搬砖日常 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    
+
+    <meta name="description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;) 创建空列表12val l = Nilval l = List()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scala入门学习笔记一 -- List | 超级无敌美少女Kitty的搬砖日常">
+<meta property="og:url" content="http://yoursite.com/2017/07/17/2017-07-17-Scala入门学习笔记一-List使用/index.html">
+<meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
+<meta property="og:description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;) 创建空列表12val l = Nilval l = List()">
+<meta property="og:updated_time" content="2017-07-17T10:54:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala入门学习笔记一 -- List | 超级无敌美少女Kitty的搬砖日常">
+<meta name="twitter:description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;) 创建空列表12val l = Nilval l = List()">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">超级无敌美少女Kitty的搬砖日常</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/kittybwj" title="Kitty on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Scala入门学习笔记一 -- List</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-07-17" class="post-meta__date date">2017-07-17</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="创建列表"><a href="#创建列表" class="headerlink" title="创建列表"></a>创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val days = List(&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;,&quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;)</div></pre></td></tr></table></figure>
+<h3 id="创建空列表"><a href="#创建空列表" class="headerlink" title="创建空列表"></a>创建空列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val l = Nil</div><div class="line">val l = List()</div></pre></td></tr></table></figure>
+<h3 id="用字符串创建列表"><a href="#用字符串创建列表" class="headerlink" title="用字符串创建列表"></a>用字符串创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; val l = &quot;Hello&quot; :: &quot;Hi&quot; :: &quot;Hah&quot; :: &quot;WOW&quot; :: &quot;WOOW&quot; :: Nil</div><div class="line">l: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
+<h3 id="通过索引获取列表值"><a href="#通过索引获取列表值" class="headerlink" title="通过索引获取列表值"></a>通过索引获取列表值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scala&gt; l(3)</div><div class="line">scala&gt; l.apply(3)</div><div class="line">res0: String = WOW</div></pre></td></tr></table></figure>
+<h3 id="获取值长度为3的元素数目"><a href="#获取值长度为3的元素数目" class="headerlink" title="获取值长度为3的元素数目"></a>获取值长度为3的元素数目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.count(s =&gt; s.length == 3)</div><div class="line">res1: Int = 2</div></pre></td></tr></table></figure>
+<h3 id="返回去掉l头两个元素的新列表"><a href="#返回去掉l头两个元素的新列表" class="headerlink" title="返回去掉l头两个元素的新列表"></a>返回去掉l头两个元素的新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.drop(2)</div><div class="line">res2: List[String] = List(Hah, WOW, WOOW)</div><div class="line">	</div><div class="line">scala&gt; l</div><div class="line">res3: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
+<h3 id="返回去掉l后两个元素的新列表"><a href="#返回去掉l后两个元素的新列表" class="headerlink" title="返回去掉l后两个元素的新列表"></a>返回去掉l后两个元素的新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.dropRight(2)</div><div class="line">res5: List[String] = List(Hello, Hi, Hah)</div><div class="line"></div><div class="line">scala&gt; l</div><div class="line">res6: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
+<h3 id="判断l是否存在某个元素"><a href="#判断l是否存在某个元素" class="headerlink" title="判断l是否存在某个元素"></a>判断l是否存在某个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.exists(s =&gt; s == &quot;Hah&quot;)</div><div class="line">scala&gt; l.contains(&quot;Hah&quot;)</div><div class="line">res7: Boolean = true</div></pre></td></tr></table></figure>
+<h3 id="除去List中的重复元素"><a href="#除去List中的重复元素" class="headerlink" title="除去List中的重复元素"></a>除去List中的重复元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; val l = List(1,2,3,3,4,4,5,5,6,6,6,8,9)</div><div class="line">l: List[Int] = List(1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 8, 9)</div><div class="line"></div><div class="line">scala&gt; l.distinct</div><div class="line">res32: List[Int] = List(1, 2, 3, 4, 5, 6, 8, 9)</div></pre></td></tr></table></figure>
+<h3 id="滤出长度为3的元素"><a href="#滤出长度为3的元素" class="headerlink" title="滤出长度为3的元素"></a>滤出长度为3的元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.filter(s =&gt; s.length == 3)</div><div class="line">res8: List[String] = List(Hah, WOW)</div></pre></td></tr></table></figure>
+<h3 id="判断所有元素是否以“H”打头"><a href="#判断所有元素是否以“H”打头" class="headerlink" title="判断所有元素是否以“H”打头"></a>判断所有元素是否以“H”打头</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.forall(s =&gt; s.startsWith(&quot;H&quot;))</div><div class="line">res10: Boolean = false</div></pre></td></tr></table></figure>
+<h3 id="判断所有元素是否以“H”结尾"><a href="#判断所有元素是否以“H”结尾" class="headerlink" title="判断所有元素是否以“H”结尾"></a>判断所有元素是否以“H”结尾</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.forall(s =&gt; s.endsWith(&quot;W&quot;))</div><div class="line">res11: Boolean = false</div></pre></td></tr></table></figure>
+<h3 id="打印每个元素"><a href="#打印每个元素" class="headerlink" title="打印每个元素"></a>打印每个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.foreach(s =&gt; print(s + &apos; &apos;))</div><div class="line">Hello Hi Hah WOW WOOW</div></pre></td></tr></table></figure>
+<h3 id="取出第一个元素"><a href="#取出第一个元素" class="headerlink" title="取出第一个元素"></a>取出第一个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.head</div><div class="line">res17: String = Hello</div></pre></td></tr></table></figure>
+<h3 id="取出最后一个元素"><a href="#取出最后一个元素" class="headerlink" title="取出最后一个元素"></a>取出最后一个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.last</div><div class="line">res20: String = WOOW</div></pre></td></tr></table></figure>
+<h3 id="剔除最后一个元素，生成新列表"><a href="#剔除最后一个元素，生成新列表" class="headerlink" title="剔除最后一个元素，生成新列表"></a>剔除最后一个元素，生成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.init</div><div class="line">res18: List[String] = List(Hello, Hi, Hah, WOW)</div></pre></td></tr></table></figure>
+<h3 id="剔除第一个元素，生成新列表"><a href="#剔除第一个元素，生成新列表" class="headerlink" title="剔除第一个元素，生成新列表"></a>剔除第一个元素，生成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.tail</div><div class="line">res49: List[String] = List(Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
+<h3 id="判断列表是否为空"><a href="#判断列表是否为空" class="headerlink" title="判断列表是否为空"></a>判断列表是否为空</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.isEmpty</div><div class="line">res19: Boolean = false</div></pre></td></tr></table></figure>
+<h3 id="获得列表长度"><a href="#获得列表长度" class="headerlink" title="获得列表长度"></a>获得列表长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.length</div><div class="line">res21: Int = 5</div></pre></td></tr></table></figure>
+<h3 id="修改每个元素，再反转每个元素形成新列表"><a href="#修改每个元素，再反转每个元素形成新列表" class="headerlink" title="修改每个元素，再反转每个元素形成新列表"></a>修改每个元素，再反转每个元素形成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.map(s =&gt; &#123;val s1 = s + &quot; - 01&quot;; s1.reverse&#125;)</div><div class="line">res29: List[String] = List(10 - olleH, 10 - iH, 10 - haH, 10 - WOW, 10 - WOOW)</div></pre></td></tr></table></figure>
+<h3 id="生成用逗号隔开的字符串"><a href="#生成用逗号隔开的字符串" class="headerlink" title="生成用逗号隔开的字符串"></a>生成用逗号隔开的字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.mkString(&quot;, &quot;)</div><div class="line">res30: String = Hello, Hi, Hah, WOW, WOOW</div></pre></td></tr></table></figure>
+<h3 id="反序生成新列表"><a href="#反序生成新列表" class="headerlink" title="反序生成新列表"></a>反序生成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.reverse</div><div class="line">res41: List[String] = List(WOOW, WOW, Hah, Hi, Hello)</div></pre></td></tr></table></figure>
+<h3 id="按字母递增排序"><a href="#按字母递增排序" class="headerlink" title="按字母递增排序"></a>按字母递增排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.sortWith(_.compareTo(_) &lt; 0)</div><div class="line">res48: List[String] = List(Hah, Hello, Hi, WOOW, WOW)</div></pre></td></tr></table></figure>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <script type="text/javascript">
+    var disqus_shortname = 'biwenjie-com';
+
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    </script>
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262872471'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1262872471%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
