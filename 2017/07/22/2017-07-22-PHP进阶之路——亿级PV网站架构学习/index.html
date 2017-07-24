@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      PHP进阶之路——亿级PV网站架构学习 | 超级无敌美少女Kitty的搬砖日常 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    
+
+    <meta name="description" content="最近，沉迷于在segmentfault上看大神们的技术直播讲堂，果然小白的世界看视频比看技术书更容易接受的多。听了周梦康大神的《PHP 进阶之路 - 亿级 pv 网站架构的技术细节与套路》，虽一时无法全部吸收和听懂，仍然打开了深入学习PHP的大门。现将讲座中提到的一些内容整理和细化，慢慢补充。 先以两句讲座中的提到的励志鸡汤开头，激励一下自己(^o^)/~：  八小时之内决定现在，八小时之外决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP进阶之路——亿级PV网站架构学习 | 超级无敌美少女Kitty的搬砖日常">
+<meta property="og:url" content="http://yoursite.com/2017/07/22/2017-07-22-PHP进阶之路——亿级PV网站架构学习/index.html">
+<meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
+<meta property="og:description" content="最近，沉迷于在segmentfault上看大神们的技术直播讲堂，果然小白的世界看视频比看技术书更容易接受的多。听了周梦康大神的《PHP 进阶之路 - 亿级 pv 网站架构的技术细节与套路》，虽一时无法全部吸收和听懂，仍然打开了深入学习PHP的大门。现将讲座中提到的一些内容整理和细化，慢慢补充。 先以两句讲座中的提到的励志鸡汤开头，激励一下自己(^o^)/~：  八小时之内决定现在，八小时之外决">
+<meta property="og:image" content="http://yoursite.com/images/后端架构.png">
+<meta property="og:image" content="http://yoursite.com/images/一个数据库.png">
+<meta property="og:image" content="http://yoursite.com/images/多个数据库1.png">
+<meta property="og:image" content="http://yoursite.com/images/多个数据库2.png">
+<meta property="og:image" content="http://yoursite.com/images/架构和性能优化的核心.png">
+<meta property="og:image" content="http://yoursite.com/images/服务治理.png">
+<meta property="og:image" content="http://yoursite.com/images/服务治理原理.png">
+<meta property="og:image" content="http://yoursite.com/images/日志.png">
+<meta property="og:image" content="http://yoursite.com/images/耗时最长.png">
+<meta property="og:image" content="http://yoursite.com/images/分布式计划任务.png">
+<meta property="og:updated_time" content="2017-07-22T07:21:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP进阶之路——亿级PV网站架构学习 | 超级无敌美少女Kitty的搬砖日常">
+<meta name="twitter:description" content="最近，沉迷于在segmentfault上看大神们的技术直播讲堂，果然小白的世界看视频比看技术书更容易接受的多。听了周梦康大神的《PHP 进阶之路 - 亿级 pv 网站架构的技术细节与套路》，虽一时无法全部吸收和听懂，仍然打开了深入学习PHP的大门。现将讲座中提到的一些内容整理和细化，慢慢补充。 先以两句讲座中的提到的励志鸡汤开头，激励一下自己(^o^)/~：  八小时之内决定现在，八小时之外决">
+<meta name="twitter:image" content="http://yoursite.com/images/后端架构.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">超级无敌美少女Kitty的搬砖日常</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/kittybwj" title="Kitty on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">PHP进阶之路——亿级PV网站架构学习</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-07-22" class="post-meta__date date">2017-07-22</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>  最近，沉迷于在segmentfault上看大神们的技术直播讲堂，果然小白的世界看视频比看技术书更容易接受的多。听了周梦康大神的<a href="https://segmentfault.com/l/1500000009978736" target="_blank" rel="external">《PHP 进阶之路 - 亿级 pv 网站架构的技术细节与套路》</a>，虽一时无法全部吸收和听懂，仍然打开了深入学习PHP的大门。现将讲座中提到的一些内容整理和细化，慢慢补充。</p>
+<p>先以两句讲座中的提到的励志鸡汤开头，激励一下自己(^o^)/~：</p>
+<ul>
+<li>八小时之内决定现在，八小时之外决定未来，人与人的区别就在于八小时之外如何运用。</li>
+<li>一个好的程序员，要学会不停地学习和总结，而不是每天重复的做着相同的会的事。</li>
+</ul>
+<h2 id="一、后端架构的套路"><a href="#一、后端架构的套路" class="headerlink" title="一、后端架构的套路"></a>一、后端架构的套路</h2><h3 id="1、服务解耦，业务拆分"><a href="#1、服务解耦，业务拆分" class="headerlink" title="1、服务解耦，业务拆分"></a>1、服务解耦，业务拆分</h3><p>为什么要业务拆分？</p>
+<ul>
+<li>各个请求耗时不同，防止阻塞</li>
+<li>功能属性、登录启动冷数据、重组feed流，计算密集；上传文件I/O密集</li>
+<li>方便故障排查</li>
+<li>业务拆分，代码不一定拆分</li>
+</ul>
+<p>服务之间，session通过redis共享</p>
+<h3 id="2、后端架构常见套路"><a href="#2、后端架构常见套路" class="headerlink" title="2、后端架构常见套路"></a>2、后端架构常见套路</h3><ul>
+<li>负载均衡</li>
+<li>动静分离</li>
+<li>读写分离</li>
+<li>缓存</li>
+<li>分布式<br><img src="/images/后端架构.png" alt="后端架构"></li>
+</ul>
+<p>扩展：cdn切片</p>
+<p>什么是集群？什么是分布式？分布式和集群有什么区别？</p>
+<ul>
+<li>分布式：一个业务分拆多个子业务，部署在不同的服务器上</li>
+<li>集群：同一个业务，部署在多个服务器上</li>
+<li>集群是个物理形态，分布式是个工作方式。</li>
+<li>只要是一堆机器，就可以叫集群</li>
+<li>分布式将任务放在多个物理隔离的节点上进行</li>
+<li>分布式中各个子节点互不通信，统一受管控中心管理调度</li>
+<li>分布式管控中心指定路由、负载均衡，发现并踢出故障设备，方便扩容</li>
+</ul>
+<p>实现一个分布式数据库</p>
+<ul>
+<li>一个数据库<br><img src="/images/一个数据库.png" alt="一个数据库"></li>
+<li>多个数据库<br><img src="/images/多个数据库1.png" alt="多个数据库"><br><img src="/images/多个数据库2.png" alt="多个数据库"></li>
+</ul>
+<p>php函数 sys_getloadavg + redis 来实现负载的动态分配<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uptime|awk &apos;&#123;print $10,$11,$12&#125;&apos;|awk -F&apos;,&apos; &apos;&#123;print $1&#125;&apos;  也可以打印出负载</div></pre></td></tr></table></figure></p>
+<p><strong>面试题：如何保证读写分离</strong></p>
+<ul>
+<li>SQL语句的预处理，关键字判断：如果是insert、update、delete就是写，如果是select就是读（代码层面）</li>
+<li>账号权限设置方面：从库只拥有读权限</li>
+</ul>
+<p><strong>面试题：数据库服务器负载高，如何排查如何解决?</strong></p>
+<p>show processlist 能看到当前的线程数</p>
+<p>杀死阻塞的操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -e &quot;show processlist;&quot; |grep -i &apos;delete&apos;|awk &apos;&#123;printf &quot;mysql -uroot -e \&quot;kill %d;\&quot;&quot;,$1&#125;&apos;|sh</div></pre></td></tr></table></figure></p>
+<p>事后记得检查分析mysql慢日志</p>
+<h2 id="二、架构和性能优化的核心（分）"><a href="#二、架构和性能优化的核心（分）" class="headerlink" title="二、架构和性能优化的核心（分）"></a>二、架构和性能优化的核心（分）</h2><p><img src="/images/架构和性能优化的核心.png" alt="架构和性能优化的核心"></p>
+<p>扩展：</p>
+<ol>
+<li><p><a href="http://zhaohe162.blog.163.com/blog/static/3821679720123915447426/" target="_blank" rel="external">雅虎军规29条</a></p>
+</li>
+<li><p>Nosql(not only sql)</p>
+</li>
+</ol>
+<ul>
+<li>现在主流的NoSQL数据库有BigTable、Hbase、Cassandra、SimpleDB、CouchDB、MongoDB和Redis等。</li>
+<li>sql：关系型数据库，Nosql：非关系型数据库</li>
+<li>mysql：多线程，redis：单线程</li>
+</ul>
+<h2 id="三、服务治理（分）"><a href="#三、服务治理（分）" class="headerlink" title="三、服务治理（分）"></a>三、服务治理（分）</h2><h3 id="1、为什么需要服务治理"><a href="#1、为什么需要服务治理" class="headerlink" title="1、为什么需要服务治理"></a>1、为什么需要服务治理</h3><p><a href="https://segmentfault.com/a/1190000010224335" target="_blank" rel="external"> 我们坐在高高的谷堆上面听康哥讲 - 服务治理 </a></p>
+<p><img src="/images/服务治理.png" alt="服务治理"></p>
+<h3 id="2、服务治理的原理"><a href="#2、服务治理的原理" class="headerlink" title="2、服务治理的原理"></a>2、服务治理的原理</h3><p><img src="/images/服务治理原理.png" alt="服务治理原理"></p>
+<p>订单系统，就是服务的提供者。用订单系统的是服务的消费者。</p>
+<h3 id="3、服务治理的核心之一-RPC"><a href="#3、服务治理的核心之一-RPC" class="headerlink" title="3、服务治理的核心之一 RPC"></a>3、服务治理的核心之一 RPC</h3><p>什么是RPC？</p>
+<p>RPC (Remote Procedure Call)是一个计算机通信协议，该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额外地为这个交互作用编程。RPC是一个分布式计算的CS模式，总是由Client向Server发出一个执行若干过程请求，Server接受请求，使用客户端提供的参数，计算完成之后将结果返回给客户端。RPC的协议有很多，比如最早的CORBA，Java RMI，Web Service的RPC风格，Hessian，Thrift，甚至Rest API。</p>
+<h2 id="四、日志的收集与分析"><a href="#四、日志的收集与分析" class="headerlink" title="四、日志的收集与分析"></a>四、日志的收集与分析</h2><h3 id="1、日志的分类"><a href="#1、日志的分类" class="headerlink" title="1、日志的分类"></a>1、日志的分类</h3><p><img src="/images/日志.png" alt="日志"></p>
+<h3 id="2、日志平台"><a href="#2、日志平台" class="headerlink" title="2、日志平台"></a>2、日志平台</h3><ul>
+<li>使用logstash+elasticsearch+kibana快速搭建日志平台</li>
+<li>sentry</li>
+</ul>
+<p><strong>面试题：从nginx日志中找出请求耗时最长的100条请求?</strong><br><img src="/images/耗时最长.png" alt="耗时最长"></p>
+<h2 id="五、完善的监控系统"><a href="#五、完善的监控系统" class="headerlink" title="五、完善的监控系统"></a>五、完善的监控系统</h2><h3 id="1、监控系统"><a href="#1、监控系统" class="headerlink" title="1、监控系统"></a>1、监控系统</h3><ul>
+<li>老牌的监控系统：zabbix</li>
+<li>现代监控系统：grafana + influxdb</li>
+<li>参考文章：<a href="https://mengkang.net/836.html" target="_blank" rel="external"> 搭同事的车一起玩了下influxdb </a></li>
+<li>参考文章：<a href="http://ruby-china.org/topics/23470" target="_blank" rel="external">  InfluxDB + Grafana 快速搭建自己的 NewRelic，分析应用运行情况 </a></li>
+</ul>
+<h3 id="2、需要监控哪些数据？"><a href="#2、需要监控哪些数据？" class="headerlink" title="2、需要监控哪些数据？"></a>2、需要监控哪些数据？</h3><ul>
+<li>系统层:CPU、内存、负载、网卡、I/O 等</li>
+<li>应用层:QPS(Query Per Second)、api 响应时长 、redis 内存使用量、队列任务数、php-fpm进程数、mysql 线程数</li>
+<li>健康巡查:dns 解析、ip 是否访问、硬盘、各种基础服务</li>
+</ul>
+<h2 id="六、分布式计划任务"><a href="#六、分布式计划任务" class="headerlink" title="六、分布式计划任务"></a>六、分布式计划任务</h2><h3 id="1、分布式计划任务的实现"><a href="#1、分布式计划任务的实现" class="headerlink" title="1、分布式计划任务的实现"></a>1、分布式计划任务的实现</h3><p><img src="/images/分布式计划任务.png" alt="分布式计划任务"></p>
+<h3 id="2、为什么这么多计划任务服务"><a href="#2、为什么这么多计划任务服务" class="headerlink" title="2、为什么这么多计划任务服务"></a>2、为什么这么多计划任务服务</h3><ul>
+<li>让一台服务器有多个用处，如主用途是 lvs 的备用机、图片存储服务器。</li>
+<li>要因为是后台运行就完全不考虑性能， 如查询不带条件，要注意内存消耗。</li>
+</ul>
+<h3 id="3、怎么保证执行单一入口的文件里面的任务列表是非阻塞的"><a href="#3、怎么保证执行单一入口的文件里面的任务列表是非阻塞的" class="headerlink" title="3、怎么保证执行单一入口的文件里面的任务列表是非阻塞的"></a>3、怎么保证执行单一入口的文件里面的任务列表是非阻塞的</h3><ul>
+<li>popen（管道），不要用fread 来接收返回的数据</li>
+</ul>
+<h2 id="七、性能的压测"><a href="#七、性能的压测" class="headerlink" title="七、性能的压测"></a>七、性能的压测</h2><h3 id="1、要看响应事件"><a href="#1、要看响应事件" class="headerlink" title="1、要看响应事件"></a>1、要看响应事件</h3><ul>
+<li><a href="http://coolshell.cn/articles/17381.html" target="_blank" rel="external">性能测试应该怎么做</a></li>
+<li>二八原则：80%的流量会在20%的时间中抵达</li>
+</ul>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <script type="text/javascript">
+    var disqus_shortname = 'biwenjie-com';
+
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+    </script>
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262872471'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1262872471%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
