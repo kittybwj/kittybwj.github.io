@@ -546,10 +546,14 @@
 
       
         
-          
-            <h3 id="1、获取今天日期"><a href="#1、获取今天日期" class="headerlink" title="1、获取今天日期"></a>1、获取今天日期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def getNowDate():String=&#123;</div><div class="line">  var now:Date = new Date()</div><div class="line">  var  dateFormat:SimpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;)</div><div class="line">  var hehe = dateFormat.format( now )</div><div class="line">  hehe</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2、获取昨天的日期"><a href="#2、获取昨天的日期" class="headerlink" title="2、获取昨天的日期"></a>2、获取昨天的日期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def getYesterday():String=&#123;</div><div class="line">  var  dateFormat:SimpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;)</div><div class="line">  var cal:Calendar=Calendar.getInstance()</div><div class="line">  cal.add(Calendar.DATE,-1)</div><div class="line">  var yesterday=dateFormat.format(cal.getTime())</div><div class="line">  yesterday</div></pre></td></tr></table></figure>
-          
+          <h3 id="1、获取今天日期"><a href="#1、获取今天日期" class="headerlink" title="1、获取今天日期"></a>1、获取今天日期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def getNowDate():String=&#123;</div><div class="line">  var now:Date = new Date()</div><div class="line">  var  dateFormat:SimpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;)</div><div class="line">  var hehe = dateFormat.format( now )</div><div class="line">  hehe</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/17/2017-07-17-Scala入门学习笔记二-时间处理（获取今天时间、昨天时间等）/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -666,32 +670,14 @@
 
       
         
-          
-            <h3 id="创建列表"><a href="#创建列表" class="headerlink" title="创建列表"></a>创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val days = List(&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;,&quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;)</div></pre></td></tr></table></figure>
-<h3 id="创建空列表"><a href="#创建空列表" class="headerlink" title="创建空列表"></a>创建空列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val l = Nil</div><div class="line">val l = List()</div></pre></td></tr></table></figure>
-<h3 id="用字符串创建列表"><a href="#用字符串创建列表" class="headerlink" title="用字符串创建列表"></a>用字符串创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; val l = &quot;Hello&quot; :: &quot;Hi&quot; :: &quot;Hah&quot; :: &quot;WOW&quot; :: &quot;WOOW&quot; :: Nil</div><div class="line">l: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
-<h3 id="通过索引获取列表值"><a href="#通过索引获取列表值" class="headerlink" title="通过索引获取列表值"></a>通过索引获取列表值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scala&gt; l(3)</div><div class="line">scala&gt; l.apply(3)</div><div class="line">res0: String = WOW</div></pre></td></tr></table></figure>
-<h3 id="获取值长度为3的元素数目"><a href="#获取值长度为3的元素数目" class="headerlink" title="获取值长度为3的元素数目"></a>获取值长度为3的元素数目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.count(s =&gt; s.length == 3)</div><div class="line">res1: Int = 2</div></pre></td></tr></table></figure>
-<h3 id="返回去掉l头两个元素的新列表"><a href="#返回去掉l头两个元素的新列表" class="headerlink" title="返回去掉l头两个元素的新列表"></a>返回去掉l头两个元素的新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.drop(2)</div><div class="line">res2: List[String] = List(Hah, WOW, WOOW)</div><div class="line">	</div><div class="line">scala&gt; l</div><div class="line">res3: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
-<h3 id="返回去掉l后两个元素的新列表"><a href="#返回去掉l后两个元素的新列表" class="headerlink" title="返回去掉l后两个元素的新列表"></a>返回去掉l后两个元素的新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.dropRight(2)</div><div class="line">res5: List[String] = List(Hello, Hi, Hah)</div><div class="line"></div><div class="line">scala&gt; l</div><div class="line">res6: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
-<h3 id="判断l是否存在某个元素"><a href="#判断l是否存在某个元素" class="headerlink" title="判断l是否存在某个元素"></a>判断l是否存在某个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.exists(s =&gt; s == &quot;Hah&quot;)</div><div class="line">scala&gt; l.contains(&quot;Hah&quot;)</div><div class="line">res7: Boolean = true</div></pre></td></tr></table></figure>
-<h3 id="除去List中的重复元素"><a href="#除去List中的重复元素" class="headerlink" title="除去List中的重复元素"></a>除去List中的重复元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">scala&gt; val l = List(1,2,3,3,4,4,5,5,6,6,6,8,9)</div><div class="line">l: List[Int] = List(1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 6, 8, 9)</div><div class="line"></div><div class="line">scala&gt; l.distinct</div><div class="line">res32: List[Int] = List(1, 2, 3, 4, 5, 6, 8, 9)</div></pre></td></tr></table></figure>
-<h3 id="滤出长度为3的元素"><a href="#滤出长度为3的元素" class="headerlink" title="滤出长度为3的元素"></a>滤出长度为3的元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.filter(s =&gt; s.length == 3)</div><div class="line">res8: List[String] = List(Hah, WOW)</div></pre></td></tr></table></figure>
-<h3 id="判断所有元素是否以“H”打头"><a href="#判断所有元素是否以“H”打头" class="headerlink" title="判断所有元素是否以“H”打头"></a>判断所有元素是否以“H”打头</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.forall(s =&gt; s.startsWith(&quot;H&quot;))</div><div class="line">res10: Boolean = false</div></pre></td></tr></table></figure>
-<h3 id="判断所有元素是否以“H”结尾"><a href="#判断所有元素是否以“H”结尾" class="headerlink" title="判断所有元素是否以“H”结尾"></a>判断所有元素是否以“H”结尾</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.forall(s =&gt; s.endsWith(&quot;W&quot;))</div><div class="line">res11: Boolean = false</div></pre></td></tr></table></figure>
-<h3 id="打印每个元素"><a href="#打印每个元素" class="headerlink" title="打印每个元素"></a>打印每个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.foreach(s =&gt; print(s + &apos; &apos;))</div><div class="line">Hello Hi Hah WOW WOOW</div></pre></td></tr></table></figure>
-<h3 id="取出第一个元素"><a href="#取出第一个元素" class="headerlink" title="取出第一个元素"></a>取出第一个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.head</div><div class="line">res17: String = Hello</div></pre></td></tr></table></figure>
-<h3 id="取出最后一个元素"><a href="#取出最后一个元素" class="headerlink" title="取出最后一个元素"></a>取出最后一个元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.last</div><div class="line">res20: String = WOOW</div></pre></td></tr></table></figure>
-<h3 id="剔除最后一个元素，生成新列表"><a href="#剔除最后一个元素，生成新列表" class="headerlink" title="剔除最后一个元素，生成新列表"></a>剔除最后一个元素，生成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.init</div><div class="line">res18: List[String] = List(Hello, Hi, Hah, WOW)</div></pre></td></tr></table></figure>
-<h3 id="剔除第一个元素，生成新列表"><a href="#剔除第一个元素，生成新列表" class="headerlink" title="剔除第一个元素，生成新列表"></a>剔除第一个元素，生成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.tail</div><div class="line">res49: List[String] = List(Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
-<h3 id="判断列表是否为空"><a href="#判断列表是否为空" class="headerlink" title="判断列表是否为空"></a>判断列表是否为空</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.isEmpty</div><div class="line">res19: Boolean = false</div></pre></td></tr></table></figure>
-<h3 id="获得列表长度"><a href="#获得列表长度" class="headerlink" title="获得列表长度"></a>获得列表长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.length</div><div class="line">res21: Int = 5</div></pre></td></tr></table></figure>
-<h3 id="修改每个元素，再反转每个元素形成新列表"><a href="#修改每个元素，再反转每个元素形成新列表" class="headerlink" title="修改每个元素，再反转每个元素形成新列表"></a>修改每个元素，再反转每个元素形成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.map(s =&gt; &#123;val s1 = s + &quot; - 01&quot;; s1.reverse&#125;)</div><div class="line">res29: List[String] = List(10 - olleH, 10 - iH, 10 - haH, 10 - WOW, 10 - WOOW)</div></pre></td></tr></table></figure>
-<h3 id="生成用逗号隔开的字符串"><a href="#生成用逗号隔开的字符串" class="headerlink" title="生成用逗号隔开的字符串"></a>生成用逗号隔开的字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.mkString(&quot;, &quot;)</div><div class="line">res30: String = Hello, Hi, Hah, WOW, WOOW</div></pre></td></tr></table></figure>
-<h3 id="反序生成新列表"><a href="#反序生成新列表" class="headerlink" title="反序生成新列表"></a>反序生成新列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.reverse</div><div class="line">res41: List[String] = List(WOOW, WOW, Hah, Hi, Hello)</div></pre></td></tr></table></figure>
-<h3 id="按字母递增排序"><a href="#按字母递增排序" class="headerlink" title="按字母递增排序"></a>按字母递增排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; l.sortWith(_.compareTo(_) &lt; 0)</div><div class="line">res48: List[String] = List(Hah, Hello, Hi, WOOW, WOW)</div></pre></td></tr></table></figure>
-
-          
+          <h3 id="创建列表"><a href="#创建列表" class="headerlink" title="创建列表"></a>创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val days = List(&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;,&quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;)</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/17/2017-07-17-Scala入门学习笔记一-List使用/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -738,7 +724,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -757,7 +743,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/07/hello-world/" itemprop="url">Welcome to Kitty's blog</a></h1>
+                <a class="post-title-link" href="/2017/07/07/Welcome-to-Kitty-s-blog/" itemprop="url">Welcome to Kitty's blog</a></h1>
         
 
         <div class="post-meta">
@@ -808,14 +794,15 @@
 
       
         
-          
-            <p>Hello World ！喜大普奔！我的个人博客终于搭好啦！</p>
-<h3 id="博客诞生背景"><a href="#博客诞生背景" class="headerlink" title="博客诞生背景"></a>博客诞生背景</h3><p>本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照<a href="http://www.jumpbeandev.com/" target="_blank" rel="external">牛叔叔的博客</a>完成了搭建。终于，在这个星期的最后，又变回了乐观开心的小kitty。</p>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p><img src="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&amp;fm=26&amp;gp=0.jpg" alt="Kitty"></p>
-<p>我，一个喜欢Hello Kitty的小仙女，除了会写代码，哪儿哪儿都不像个程序员。<br>我，一个技术小白，但是我相信，小白总有一天会变成很厉害很厉害的人。<br>我，一个自认为每天都很开心并充满正能量的程序员鼓励师。除了被别人嘲笑技术差和客户又双叒要该需求，没有什么能影响我的心情。当然，前者会激励我进步，后者无解（此处配有微笑的表情）。<br>我，想做喜欢做的事，成为想成为的人。</p>
-<h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><p>这是一个技术博！这是一个技术博！这是一个技术博！<br>重要的事情说三遍~<br>希望不要变成小仙女的逛吃日常<br>加油加油！要变成技术大牛！</p>
-
-          
+          <p>Hello World ！喜大普奔！我的个人博客终于搭好啦！</p>
+<h3 id="博客诞生背景"><a href="#博客诞生背景" class="headerlink" title="博客诞生背景"></a>博客诞生背景</h3><p>本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照<a href="http://www.jumpbeandev.com/" target="_blank" rel="external">牛叔叔的博客</a>完成了搭建。终于，在这个星期的最后，又变回了乐观开心的小kitty。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/07/Welcome-to-Kitty-s-blog/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;) 创建空列表12val l = Nilval l = List()">
+<meta name="description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scala入门学习笔记一 -- List">
 <meta property="og:url" content="http://yoursite.com/2017/07/17/2017-07-17-Scala入门学习笔记一-List使用/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;) 创建空列表12val l = Nilval l = List()">
-<meta property="og:updated_time" content="2017-07-17T10:54:52.000Z">
+<meta property="og:description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;)">
+<meta property="og:updated_time" content="2018-02-01T16:11:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scala入门学习笔记一 -- List">
-<meta name="twitter:description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;) 创建空列表12val l = Nilval l = List()">
+<meta name="twitter:description" content="创建列表1val days = List(&amp;quot;Sunday&amp;quot;, &amp;quot;Monday&amp;quot;, &amp;quot;Tuesday&amp;quot;,&amp;quot;Wednesday&amp;quot;, &amp;quot;Thursday&amp;quot;, &amp;quot;Friday&amp;quot;, &amp;quot;Saturday&amp;quot;)">
 
 
 
@@ -299,6 +299,7 @@
 
       
         <h3 id="创建列表"><a href="#创建列表" class="headerlink" title="创建列表"></a>创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val days = List(&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;,&quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;)</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="创建空列表"><a href="#创建空列表" class="headerlink" title="创建空列表"></a>创建空列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val l = Nil</div><div class="line">val l = List()</div></pre></td></tr></table></figure>
 <h3 id="用字符串创建列表"><a href="#用字符串创建列表" class="headerlink" title="用字符串创建列表"></a>用字符串创建列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scala&gt; val l = &quot;Hello&quot; :: &quot;Hi&quot; :: &quot;Hah&quot; :: &quot;WOW&quot; :: &quot;WOOW&quot; :: Nil</div><div class="line">l: List[String] = List(Hello, Hi, Hah, WOW, WOOW)</div></pre></td></tr></table></figure>
 <h3 id="通过索引获取列表值"><a href="#通过索引获取列表值" class="headerlink" title="通过索引获取列表值"></a>通过索引获取列表值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">scala&gt; l(3)</div><div class="line">scala&gt; l.apply(3)</div><div class="line">res0: String = WOW</div></pre></td></tr></table></figure>
@@ -345,7 +346,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/07/hello-world/" rel="next" title="Welcome to Kitty's blog">
+              <a href="/2017/07/07/Welcome-to-Kitty-s-blog/" rel="next" title="Welcome to Kitty's blog">
                 <i class="fa fa-chevron-left"></i> Welcome to Kitty's blog
               </a>
             
