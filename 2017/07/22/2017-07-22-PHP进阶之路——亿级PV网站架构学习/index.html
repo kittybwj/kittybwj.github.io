@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/images/日志.png">
 <meta property="og:image" content="http://yoursite.com/images/耗时最长.png">
 <meta property="og:image" content="http://yoursite.com/images/分布式计划任务.png">
-<meta property="og:updated_time" content="2017-07-22T07:21:42.000Z">
+<meta property="og:updated_time" content="2018-02-01T16:09:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP进阶之路——亿级PV网站架构学习">
 <meta name="twitter:description" content="最近，沉迷于在segmentfault上看大神们的技术直播讲堂，果然小白的世界看视频比看技术书更容易接受的多。听了周梦康大神的《PHP 进阶之路 - 亿级 pv 网站架构的技术细节与套路》，虽一时无法全部吸收和听懂，仍然打开了深入学习PHP的大门。现将讲座中提到的一些内容整理和细化，慢慢补充。 先以两句讲座中的提到的励志鸡汤开头，激励一下自己(^o^)/~：  八小时之内决定现在，八小时之外决">
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -269,7 +269,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-22T12:54:01+08:00">
                 2017-07-22
@@ -313,9 +313,10 @@
 <p>先以两句讲座中的提到的励志鸡汤开头，激励一下自己(^o^)/~：</p>
 <ul>
 <li>八小时之内决定现在，八小时之外决定未来，人与人的区别就在于八小时之外如何运用。</li>
-<li>一个好的程序员，要学会不停地学习和总结，而不是每天重复的做着相同的会的事。</li>
+<li>一个好的程序员，要学会不停地学习和总结，而不是每天重复的做着相同的会的事。<a id="more"></a>
+<h2 id="一、后端架构的套路"><a href="#一、后端架构的套路" class="headerlink" title="一、后端架构的套路"></a>一、后端架构的套路</h2></li>
 </ul>
-<h2 id="一、后端架构的套路"><a href="#一、后端架构的套路" class="headerlink" title="一、后端架构的套路"></a>一、后端架构的套路</h2><h3 id="1、服务解耦，业务拆分"><a href="#1、服务解耦，业务拆分" class="headerlink" title="1、服务解耦，业务拆分"></a>1、服务解耦，业务拆分</h3><p>为什么要业务拆分？</p>
+<h3 id="1、服务解耦，业务拆分"><a href="#1、服务解耦，业务拆分" class="headerlink" title="1、服务解耦，业务拆分"></a>1、服务解耦，业务拆分</h3><p>为什么要业务拆分？</p>
 <ul>
 <li>各个请求耗时不同，防止阻塞</li>
 <li>功能属性、登录启动冷数据、重组feed流，计算密集；上传文件I/O密集</li>
@@ -494,10 +495,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -518,7 +519,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -594,7 +595,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
