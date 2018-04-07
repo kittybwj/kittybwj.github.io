@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言在去年项目中搭建了五节点负载均衡架构，算是到目前遇到的挑战性比较大的工作，花费了很多时间学习和讨论，接触到一些新的知识，故在此记录一下。 思路客户提供了五台服务器，CPU2核，内存4GB，因为要搭建一个负载均衡架构，所以其中一台带宽比较大。 那么如何分配五台服务器呢？我们希望最后的架构能做到负载均衡、数据库主从复制、读写分离，所以决定：  1个负载均衡服务器  2个应用服务器  2个MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五节点Nginx+PHP负载均衡架构的搭建">
+<meta property="og:url" content="http://yoursite.com/2018/04/07/2018-04-07-五节点Nginx-PHP负载均衡架构的搭建/index.html">
+<meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
+<meta property="og:description" content="前言在去年项目中搭建了五节点负载均衡架构，算是到目前遇到的挑战性比较大的工作，花费了很多时间学习和讨论，接触到一些新的知识，故在此记录一下。 思路客户提供了五台服务器，CPU2核，内存4GB，因为要搭建一个负载均衡架构，所以其中一台带宽比较大。 那么如何分配五台服务器呢？我们希望最后的架构能做到负载均衡、数据库主从复制、读写分离，所以决定：  1个负载均衡服务器  2个应用服务器  2个MySQL">
+<meta property="og:image" content="http://yoursite.com/images/架构图.png">
+<meta property="og:image" content="http://upload.chinaz.com/2016/0225/1456371854897.png">
+<meta property="og:updated_time" content="2018-04-07T12:37:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="五节点Nginx+PHP负载均衡架构的搭建">
+<meta name="twitter:description" content="前言在去年项目中搭建了五节点负载均衡架构，算是到目前遇到的挑战性比较大的工作，花费了很多时间学习和讨论，接触到一些新的知识，故在此记录一下。 思路客户提供了五台服务器，CPU2核，内存4GB，因为要搭建一个负载均衡架构，所以其中一台带宽比较大。 那么如何分配五台服务器呢？我们希望最后的架构能做到负载均衡、数据库主从复制、读写分离，所以决定：  1个负载均衡服务器  2个应用服务器  2个MySQL">
+<meta name="twitter:image" content="http://yoursite.com/images/架构图.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/07/2018-04-07-五节点Nginx-PHP负载均衡架构的搭建/"/>
+
+
+
+
+
+  <title>五节点Nginx+PHP负载均衡架构的搭建 | 超级无敌美少女Kitty的搬砖日常</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">超级无敌美少女Kitty的搬砖日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/2018-04-07-五节点Nginx-PHP负载均衡架构的搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="超级无敌美少女Kitty的搬砖日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">五节点Nginx+PHP负载均衡架构的搭建</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T20:35:30+08:00">
+                2018-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在去年项目中搭建了五节点负载均衡架构，算是到目前遇到的挑战性比较大的工作，花费了很多时间学习和讨论，接触到一些新的知识，故在此记录一下。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>客户提供了五台服务器，CPU2核，内存4GB，因为要搭建一个负载均衡架构，所以其中一台带宽比较大。</p>
+<p>那么如何分配五台服务器呢？我们希望最后的架构能做到负载均衡、数据库主从复制、读写分离，所以决定：</p>
+<ul>
+<li><p>1个负载均衡服务器</p>
+</li>
+<li><p>2个应用服务器</p>
+</li>
+<li><p>2个MySQL群集节点</p>
+</li>
+</ul>
+<a id="more"></a>
+<p><img src="/images/架构图.png" alt="架构图"></p>
+<h3 id="MySQL分布式集群的搭建"><a href="#MySQL分布式集群的搭建" class="headerlink" title="MySQL分布式集群的搭建"></a>MySQL分布式集群的搭建</h3><h4 id="在Linux上安装MySQL"><a href="#在Linux上安装MySQL" class="headerlink" title="在Linux上安装MySQL"></a>在Linux上安装MySQL</h4><p>详见：</p>
+<h4 id="在Linux上，使用MySQL的yum仓库，安装MySQL"><a href="#在Linux上，使用MySQL的yum仓库，安装MySQL" class="headerlink" title="在Linux上，使用MySQL的yum仓库，安装MySQL"></a><a href="http://biwenjie.com/2018/04/07/2018-04-07-%E5%9C%A8Linux%E4%B8%8A%EF%BC%8C%E4%BD%BF%E7%94%A8MySQL%E7%9A%84yum%E4%BB%93%E5%BA%93%EF%BC%8C%E5%AE%89%E8%A3%85MySQL/" target="_blank" rel="external">在Linux上，使用MySQL的yum仓库，安装MySQL</a></h4><h4 id="同步：主主复制和主从复制"><a href="#同步：主主复制和主从复制" class="headerlink" title="同步：主主复制和主从复制"></a>同步：主主复制和主从复制</h4><p>实际的生产环境中，面对数据量大、高并发等情况，单台MySQL数据库服务器可能不能满足实际的需求,此时我们需要采用MySQL分布式集群。在此之前，我们必须保证每台MySQL服务器里的数据同步。</p>
+<p>数据同步只需要我们通过MySQL内部配置就可以完成，主要有两种方式：主从复制和主主复制。</p>
+<h5 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h5><p>1、原理</p>
+<p>MySQL复制基于主服务器在二进制日志Binary log)中跟踪所有对数据库的更改(更新、删除等等)。因此，要进行复制，必须在主服务器上启用二进制日志。</p>
+<p>每个从服务器从主服务器接收主服务器已经记录到其二进制日志的保存的更新，以便从服务器可以对其数据拷贝执行相同的更新。</p>
+<p>2、配置与实现</p>
+<ul>
+<li>场景描述：</li>
+</ul>
+<p>主数据库服务器：###.###.##.##1，MySQL已经安装，并且无应用数据。</p>
+<p>从数据库服务器：###.###.##.##2，MySQL已经安装，并且无应用数据。</p>
+<ul>
+<li>主服务器上进行的操作</li>
+</ul>
+<p>启动mysql服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/mysql/init.d/mysql start</div></pre></td></tr></table></figure>
+<p>通过命令行登录管理MySQL服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/mysql/bin/mysql -uroot -p&apos;password&apos;</div></pre></td></tr></table></figure>
+<p>授权给从数据库服务器###.###.##.##2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; GRANT REPLICATION SLAVE ON *.* to &apos;user&apos;@&apos;###.###.##.##2&apos; identified by ‘password’;</div></pre></td></tr></table></figure>
+<p>查询主数据库状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Mysql&gt; show master status;</div><div class="line">+------------------+----------+--------------+------------------+</div><div class="line">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB |</div><div class="line">+------------------+----------+--------------+------------------+</div><div class="line">| mysql-bin.000005 | 261 | | |</div><div class="line">+------------------+----------+--------------+------------------+</div></pre></td></tr></table></figure>
+<p>记录下 FILE 及 Position 的值，在后面进行从服务器操作的时候需要用到。</p>
+<ul>
+<li>配置从服务器</li>
+</ul>
+<p>修改从服务器的配置文件/opt/mysql/etc/my.cnf</p>
+<p>将 <code>server-id = 1</code>修改为 <code>server-id = 10</code>，并确保这个ID没有被别的MySQL服务所使用。</p>
+<p>启动mysql服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/mysql/init.d/mysql start</div></pre></td></tr></table></figure>
+<p>通过命令行登录管理MySQL服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/mysql/bin/mysql -uroot -p&apos;password&apos;</div></pre></td></tr></table></figure>
+<p>执行同步SQL语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; change master to</div><div class="line">master_host=’###.###.##.##1’,</div><div class="line">master_user=’user’,</div><div class="line">master_password=’password’,</div><div class="line">master_log_file=’mysql-bin.000005’,</div><div class="line">master_log_pos=261;</div></pre></td></tr></table></figure>
+<p>正确执行后启动Slave同步进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; start slave;</div></pre></td></tr></table></figure>
+<p>主从同步检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show slave status\G</div></pre></td></tr></table></figure>
+<ul>
+<li>验证主从复制效果</li>
+</ul>
+<p>在主服务器上建立数据库，建立数据表，插入数据。<br>在从服务器上查看数据与主服务器是否一致。</p>
+<h5 id="主主复制"><a href="#主主复制" class="headerlink" title="主主复制"></a>主主复制</h5><p>1、原理</p>
+<p>主主复制即在两台MySQL主机内都可以变更数据，而且另外一台主机也会做出相应的变更。</p>
+<p>2、实现</p>
+<p>主主复制其实就是两台MySQL主机互为主从，只要将两台主机分别按照主从复制的配置方法配置一遍即可。在项目中我们选择了主主复制来配置两台MySQL主机，是因为我们发现在实际运行中，如果选择主从复制，作为主的主机宕机之后，另一台主机无法自动担任主的角色，导致数据库插入数据失败。</p>
+<h4 id="读写分离：MyCat中间件"><a href="#读写分离：MyCat中间件" class="headerlink" title="读写分离：MyCat中间件"></a>读写分离：MyCat中间件</h4><p>主从复制（Master-Slave）的方式是来实现同步数据，之后我们通过读写分离（MySQL-Proxy）来提升数据库的并发负载能力。</p>
+<p>MyCAT是mysql中间件，前身是阿里大名鼎鼎的Cobar，Cobar在开源了一段时间后，不了了之。于是MyCAT扛起了这面大旗，在大数据时代，其重要性愈发彰显。</p>
+<p>由于项目框架影响，最后发现不能使用mycat中间件来进行读写分离的操作，下面简单介绍安装及配置步骤：</p>
+<p>1、安装java</p>
+<p>因Mycat是用java开发的，所以需要在实验环境下安装java。</p>
+<p>2、安装MySQL</p>
+<p>3、安装MyCAT</p>
+<p>解压mycat的安装包到/user/local/下</p>
+<p>设置mycat的环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/profile</div></pre></td></tr></table></figure>
+<p>使配置文件立即生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
+<p>进入mycat的配置文件目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/mycat/conf/</div></pre></td></tr></table></figure>
+<p>schema.xml:这个配置文件主要是用来配置数据库节点，逻辑表等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi schema.xml</div></pre></td></tr></table></figure>
+<p>server.xml:这个配置文件主要是用来配置用户权限,系统变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi server.xml</div></pre></td></tr></table></figure>
+<p>详细配置参考：<br><a href="https://blog.csdn.net/u011325787/article/details/51423424" target="_blank" rel="external">mycat配置</a></p>
+<h4 id="sysbench基准测试、压力测试"><a href="#sysbench基准测试、压力测试" class="headerlink" title="sysbench基准测试、压力测试"></a>sysbench基准测试、压力测试</h4><p>SysBench是一个模块化的、跨平台、多线程基准测试工具，主要用于评估测试各种不同系统参数下的数据库负载情况。</p>
+<ul>
+<li>数据库准备</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysbench /usr/local/share/sysbench/oltp_read_only.lua --mysql-host=###.###.##.## --mysql-port=3306 --mysql-user=root --mysql-password= password --mysql-db=sbtest --db-driver=mysql --tables=10 --table-size=100000 --report-interval=10 --threads=30 --time=120 prepare</div></pre></td></tr></table></figure>
+<ul>
+<li>开始</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysbench /usr/local/share/sysbench/oltp_read_only.lua --mysql-host=###.###.##.## --mysql-port=3306 --mysql-user=root --mysql-password=password --mysql-db=sbtest --db-driver=mysql --tables=10 --table-size=100000 --report-interval=10 --threads=30 --time=120 run</div></pre></td></tr></table></figure>
+<ul>
+<li>清楚测试数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sysbench /usr/local/share/sysbench/oltp_read_only.lua --mysql-host=###.###.##.## --mysql-port=3306 --mysql-user=root --mysql-password=password --mysql-db=sbtest --db-driver=mysql --tables=10 --table-size=100000 --report-interval=10 --threads=30 --time=120 cleanup</div></pre></td></tr></table></figure>
+<h3 id="Nginx实现负载均衡与反向代理"><a href="#Nginx实现负载均衡与反向代理" class="headerlink" title="Nginx实现负载均衡与反向代理"></a>Nginx实现负载均衡与反向代理</h3><h4 id="负载均衡原理："><a href="#负载均衡原理：" class="headerlink" title="负载均衡原理："></a>负载均衡原理：</h4><p>系统的扩展可分为纵向（垂直）扩展和横向（水平）扩展。纵向扩展，是从单机的角度通过增加硬件处理能力，比如CPU处理能力，内存容量，磁盘等方面，实现服务器处理能力的提升，不能满足大型分布式系统（网站），大流量，高并发，海量数据的问题。因此需要采用横向扩展的方式，通过添加机器来满足大型网站服务的处理能力。</p>
+<p>比如：一台机器不能满足，则增加两台或者多台机器，共同承担访问压力。这就是典型的集群和负载均衡架构：</p>
+<p>如下图：</p>
+<p><img src="http://upload.chinaz.com/2016/0225/1456371854897.png" alt="负载均衡"></p>
+<p>应用集群：将同一应用部署到多台机器上，组成处理集群，接收负载均衡设备分发的请求，进行处理，并返回相应数据。</p>
+<p>负载均衡设备：将用户访问的请求，根据负载均衡算法，分发到集群中的一台处理服务器。（一种把网络请求分散到一个服务器集群中的可用服务器上去的设备）</p>
+<h4 id="负载均衡的作用（解决的问题）"><a href="#负载均衡的作用（解决的问题）" class="headerlink" title="负载均衡的作用（解决的问题）"></a>负载均衡的作用（解决的问题）</h4><p>1.解决并发压力，提高应用处理性能（增加吞吐量，加强网络处理能力）；</p>
+<p>2.提供故障转移，实现高可用；</p>
+<p>3.通过添加或减少服务器数量，提供网站伸缩性（扩展性）；</p>
+<p>4.安全防护；（负载均衡设备上做一些过滤，黑白名单等处理）</p>
+<h4 id="Nginx负载均衡配置"><a href="#Nginx负载均衡配置" class="headerlink" title="Nginx负载均衡配置"></a>Nginx负载均衡配置</h4><p>配置实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#user  nobody;</div><div class="line">worker_processes  2;</div><div class="line"></div><div class="line">#error_log  logs/error.log;</div><div class="line">#error_log  logs/error.log  notice;</div><div class="line">#error_log  logs/error.log  info;</div><div class="line"></div><div class="line">#pid        logs/nginx.pid;</div><div class="line"></div><div class="line"></div><div class="line">events &#123;</div><div class="line">    accept_mutex on; #设置网路连接序列化，防止惊群现象发生，默认为on</div><div class="line">    multi_accept on; #设置一个进程是否同时接受多个网络连接，默认为off</div><div class="line">    worker_connections  1024;#最大连接数</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">http &#123;</div><div class="line">    include       mime.types;#文件扩展名与文件类型映射表，此映射表主要用于部署在本nginx上的静态资源</div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">    #日志格式</div><div class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</div><div class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</div><div class="line"></div><div class="line">    access_log  logs/access.log  main;</div><div class="line"></div><div class="line">    sendfile        on;</div><div class="line">    #tcp_nopush     on;</div><div class="line"></div><div class="line">    #keepalive_timeout  0;</div><div class="line">    keepalive_timeout  65;#连接超时时间</div><div class="line"></div><div class="line">    gzip  on;</div><div class="line"></div><div class="line">    #反向代理</div><div class="line"></div><div class="line">    #此配置将请求转发到两个WEB服务器，根据客户端IP分配目标主机，同时按权重分配流量</div><div class="line">    upstream app1 &#123;</div><div class="line">        ip_hash;</div><div class="line">        server ###.###.##.##:8080 weight=5;</div><div class="line">        server ###.###.##.##:80 weight=3;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>配置完后，记得执行以下命令生效配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nginx -s reload</div></pre></td></tr></table></figure>
+<h4 id="Nginx负载均衡策略"><a href="#Nginx负载均衡策略" class="headerlink" title="Nginx负载均衡策略"></a>Nginx负载均衡策略</h4><p>下面列举的是常用的三种负载均衡策略，可以根据实际情况的不同进行选择。为了更简单的解决session问题，本次采用的是ip_hash的策略。</p>
+<p><strong>1、轮询（默认）</strong><br>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">upstream backserver &#123; </div><div class="line">server ###.###.##.#1; </div><div class="line">server ###.###.##.#2; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2、指定权重</strong><br>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">upstream backserver &#123; </div><div class="line">server ###.###.##.#1 weight=10; </div><div class="line">server ###.###.##.#2 weight=10; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>3、IP绑定 ip_hash</strong><br>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream backserver &#123; </div><div class="line">ip_hash; </div><div class="line">server ###.###.##.#1:88; </div><div class="line">server ###.###.##.#2:80; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="nfs挂载"><a href="#nfs挂载" class="headerlink" title="nfs挂载"></a>nfs挂载</h4><p>NFS 就是 Network FileSystem 的缩写，最早之前是由sun 这家公司所发展出来的。<br>它最大的功能就是可以透过网络，让不同的机器、不同的操作系统、可以彼此分享个别的档案 (share files)。所以，你也可以简单的将他看做是一个文件服务器 (file server) 。</p>
+<p>两个应用服务器中代码就是通过nfs保持同步的，nfs挂载目录设置在第一台应用服务器上的目录中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//1、创建挂载目录</div><div class="line">//2、挂载nfs</div><div class="line">mount ip:/data/config /wwwroot/####/data/config/</div><div class="line">//3、显示NFS服务器的挂载信息</div><div class="line">showmount -e ip</div><div class="line">//可以查看挂载的情况</div><div class="line">df -h</div><div class="line">//取消nfs挂载</div><div class="line">umount /wwwroot/####/data/upload</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/07/2018-04-07-在Linux上，使用MySQL的yum仓库，安装MySQL/" rel="next" title="在Linux上，使用MySQL的yum仓库，安装MySQL">
+                <i class="fa fa-chevron-left"></i> 在Linux上，使用MySQL的yum仓库，安装MySQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjA5NS84NjU5"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="kittybwj" target="_blank" title="github">
+                    
+                      <i class="fa fa-fw fa-globe"></i>github</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL分布式集群的搭建"><span class="nav-number">3.</span> <span class="nav-text">MySQL分布式集群的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在Linux上安装MySQL"><span class="nav-number">3.1.</span> <span class="nav-text">在Linux上安装MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在Linux上，使用MySQL的yum仓库，安装MySQL"><span class="nav-number">3.2.</span> <span class="nav-text">在Linux上，使用MySQL的yum仓库，安装MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步：主主复制和主从复制"><span class="nav-number">3.3.</span> <span class="nav-text">同步：主主复制和主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主从复制"><span class="nav-number">3.3.1.</span> <span class="nav-text">主从复制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主主复制"><span class="nav-number">3.3.2.</span> <span class="nav-text">主主复制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读写分离：MyCat中间件"><span class="nav-number">3.4.</span> <span class="nav-text">读写分离：MyCat中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sysbench基准测试、压力测试"><span class="nav-number">3.5.</span> <span class="nav-text">sysbench基准测试、压力测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx实现负载均衡与反向代理"><span class="nav-number">4.</span> <span class="nav-text">Nginx实现负载均衡与反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负载均衡原理："><span class="nav-number">4.1.</span> <span class="nav-text">负载均衡原理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#负载均衡的作用（解决的问题）"><span class="nav-number">4.2.</span> <span class="nav-text">负载均衡的作用（解决的问题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx负载均衡配置"><span class="nav-number">4.3.</span> <span class="nav-text">Nginx负载均衡配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx负载均衡策略"><span class="nav-number">4.4.</span> <span class="nav-text">Nginx负载均衡策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nfs挂载"><span class="nav-number">4.5.</span> <span class="nav-text">nfs挂载</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
