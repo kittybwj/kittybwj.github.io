@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="剑指阿里,Java," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
+<meta name="description" content="集合与数组的对比 数组的长度固定，集合的长度可变 数组只能通过下标访问元素，类型固定，一般只能采用遍历的方式，当数据量大时会很不方便。而有些集合类型提供了映射关系，可以通过任意类型查找所映射的具体对象，从而方便的查找具体对象。  Java集合框架：Collection和Map Collection和Map是Java集合框架中的两个根接口。  Collection根接口主要有三个子接口，分别为：Li">
+<meta name="keywords" content="剑指阿里,Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome to Kitty&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/index.html">
+<meta property="og:title" content="Java集合框架：Collection和Map(基础)">
+<meta property="og:url" content="http://yoursite.com/2018/06/07/2018-06-07-Java集合框架：Collection和Map-基础/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
-<meta property="og:image" content="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2018-02-01T16:13:03.000Z">
+<meta property="og:description" content="集合与数组的对比 数组的长度固定，集合的长度可变 数组只能通过下标访问元素，类型固定，一般只能采用遍历的方式，当数据量大时会很不方便。而有些集合类型提供了映射关系，可以通过任意类型查找所映射的具体对象，从而方便的查找具体对象。  Java集合框架：Collection和Map Collection和Map是Java集合框架中的两个根接口。  Collection根接口主要有三个子接口，分别为：Li">
+<meta property="og:image" content="http://yoursite.com/images/java集合框架.png">
+<meta property="og:image" content="http://yoursite.com/images/键值对.png">
+<meta property="og:updated_time" content="2018-06-07T15:54:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to Kitty&#39;s blog">
-<meta name="twitter:description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
-<meta name="twitter:image" content="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&fm=26&gp=0.jpg">
+<meta name="twitter:title" content="Java集合框架：Collection和Map(基础)">
+<meta name="twitter:description" content="集合与数组的对比 数组的长度固定，集合的长度可变 数组只能通过下标访问元素，类型固定，一般只能采用遍历的方式，当数据量大时会很不方便。而有些集合类型提供了映射关系，可以通过任意类型查找所映射的具体对象，从而方便的查找具体对象。  Java集合框架：Collection和Map Collection和Map是Java集合框架中的两个根接口。  Collection根接口主要有三个子接口，分别为：Li">
+<meta name="twitter:image" content="http://yoursite.com/images/java集合框架.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/07/2018-06-07-Java集合框架：Collection和Map-基础/"/>
 
 
 
 
 
-  <title>Welcome to Kitty's blog | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>Java集合框架：Collection和Map(基础) | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/2018-06-07-Java集合框架：Collection和Map-基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Welcome to Kitty's blog</h1>
+          <h1 class="post-title" itemprop="name headline">Java集合框架：Collection和Map(基础)</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:45:17+08:00">
-                2017-07-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T23:47:50+08:00">
+                2018-06-07
               </time>
             
 
@@ -292,6 +294,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/剑指阿里/" itemprop="url" rel="index">
+                    <span itemprop="name">剑指阿里</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/剑指阿里/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -314,7 +349,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  401 字
+                  889 字
                 </span>
               
 
@@ -339,11 +374,70 @@
       
 
       
-        <p>Hello World ！喜大普奔！我的个人博客终于搭好啦！</p>
-<h3 id="博客诞生背景"><a href="#博客诞生背景" class="headerlink" title="博客诞生背景"></a>博客诞生背景</h3><p>本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照<a href="http://www.jumpbeandev.com/" target="_blank" rel="external">牛叔叔的博客</a>完成了搭建。终于，在这个星期的最后，又变回了乐观开心的小kitty。<br><a id="more"></a></p>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p><img src="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&amp;fm=26&amp;gp=0.jpg" alt="Kitty"></p>
-<p>我，一个喜欢Hello Kitty的小仙女，除了会写代码，哪儿哪儿都不像个程序员。<br>我，一个技术小白，但是我相信，小白总有一天会变成很厉害很厉害的人。<br>我，一个自认为每天都很开心并充满正能量的程序员鼓励师。除了被别人嘲笑技术差和客户又双叒要该需求，没有什么能影响我的心情。当然，前者会激励我进步，后者无解（此处配有微笑的表情）。<br>我，想做喜欢做的事，成为想成为的人。</p>
-<h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><p>这是一个技术博！这是一个技术博！这是一个技术博！<br>重要的事情说三遍~<br>希望不要变成小仙女的逛吃日常<br>加油加油！要变成技术大牛！</p>
+        <h4 id="集合与数组的对比"><a href="#集合与数组的对比" class="headerlink" title="集合与数组的对比"></a>集合与数组的对比</h4><ul>
+<li>数组的长度固定，集合的长度可变</li>
+<li>数组只能通过下标访问元素，类型固定，一般只能采用遍历的方式，当数据量大时会很不方便。而有些集合类型提供了映射关系，可以通过任意类型查找所映射的具体对象，从而方便的查找具体对象。</li>
+</ul>
+<h4 id="Java集合框架：Collection和Map"><a href="#Java集合框架：Collection和Map" class="headerlink" title="Java集合框架：Collection和Map"></a>Java集合框架：Collection和Map</h4><ul>
+<li><p>Collection和Map是Java集合框架中的两个根接口。</p>
+</li>
+<li><p>Collection根接口主要有三个子接口，分别为：List（序列）、Queue（队列）、Set（集）。</p>
+</li>
+<li><p>其中List和Queue中的元素是排列有序的，并且是可重复的。Set中元素是无序的、不可重复的。</p>
+</li>
+<li><p>List重要的实现类：ArrayList（数组序列）。</p>
+</li>
+<li><p>Queue重要的实现类：LinkedList（链表）。LinkedList同时也是List接口的实现类。</p>
+</li>
+<li><p>Set重要的实现类：HashSet（哈希集）。</p>
+</li>
+<li><p>Map也有众多的子接口，但最常用的是他的实现类：HashMap（哈希表）。</p>
+</li>
+<li><p>Collection中存储的就是一个个独立的对象，Map的内部会以<key,value>Entry键值对的形式存储，其中Key和Value可以是任意类型的对象。</key,value></p>
+<p><img src="/images/java集合框架.png" alt="java集合框架"></p>
+<a id="more"></a>
+</li>
+</ul>
+<h4 id="Collection接口、子接口以及实现类"><a href="#Collection接口、子接口以及实现类" class="headerlink" title="Collection接口、子接口以及实现类"></a>Collection接口、子接口以及实现类</h4><h5 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h5><ul>
+<li>是Java集合框架中的一个根接口</li>
+<li>是List、Queue、Set接口的父接口</li>
+<li>定义了可用于操作List、Queue、Set增删改查的方法</li>
+</ul>
+<h5 id="List接口及其实现类——ArrayList"><a href="#List接口及其实现类——ArrayList" class="headerlink" title="List接口及其实现类——ArrayList"></a>List接口及其实现类——ArrayList</h5><ul>
+<li>List是元素有序并且可以重复的集合，被称为序列</li>
+<li>List可以精确控制每个元素的插入位置，或删除某个位置上的元素</li>
+<li>ArrayList——数组序列，是List的一个重要的实现类</li>
+<li>ArrayList底层是由数组实现的</li>
+</ul>
+<p>注：</p>
+<p>1、在没有指定泛型的情况下，对象存入集合都会变成Object类型，所以在取出时需要类型转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Student student = (Student)studentList.get(0);</div></pre></td></tr></table></figure>
+<p>2、泛型</p>
+<p>泛型制定了某个集合只能存放特定类型的对象，会在编译期间进行类型检查，可以按指定类型获取集合元素。</p>
+<p>泛型集合也可以添加泛型的子类型。</p>
+<p>泛型集合的限定类型不能使用基本数据类型，可以通过使用包装类限定允许存入的基本数据类型。</p>
+<h5 id="Set接口及其实现类——HashSet"><a href="#Set接口及其实现类——HashSet" class="headerlink" title="Set接口及其实现类——HashSet"></a>Set接口及其实现类——HashSet</h5><ul>
+<li>Set是元素无序并且不可以重复的集合，被称为集。</li>
+<li>HashSet——哈希集，是Set的一个重要实现类。</li>
+<li>Set中，添加某个对象，无论添加多少次，最终只会保留一个该对象（的引用），并且保留的是第一次添加到那个。</li>
+<li>Set是无序的，所以在取的时候不能用get()方法，不能用for循环，只能用foreach或者iterator，并且每次遍历的顺序都是不同的。</li>
+</ul>
+<h4 id="Map和HashMap"><a href="#Map和HashMap" class="headerlink" title="Map和HashMap"></a>Map和HashMap</h4><h5 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h5><ul>
+<li>Map提供了一种映射关系，其中的元素是以键值对（key，value）的形式存储的，能够实现根据key快速查找到value</li>
+<li>Map中的键值对是以Entry类型的对象实例形式存在的</li>
+</ul>
+<p><img src="/images/键值对.png" alt="键值对"></p>
+<ul>
+<li>key值不可重复，value值可以重复</li>
+<li>每个键最多只能映射到一个值</li>
+<li>Map接口提供了分别返回key集合、value集合、Entry集合的方法</li>
+<li>Map支持泛型，形式如：Map<k,v></k,v></li>
+</ul>
+<h5 id="HashMap类"><a href="#HashMap类" class="headerlink" title="HashMap类"></a>HashMap类</h5><ul>
+<li>HashMap是Map的一个重要的实现类，也是最常用的，基于哈希表实现</li>
+<li>HashMap中的Entry对象是无序排列的</li>
+<li>Key值和Value值都可以为null，但是一个HashMap中只能有一个Key值为null的映射。</li>
+</ul>
 
       
     </div>
@@ -359,6 +453,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/剑指阿里/" rel="tag"># 剑指阿里</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
 
       
       
@@ -368,15 +470,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/07/2018-06-07-剑指阿里（day6）/" rel="next" title="剑指阿里（day6）">
+                <i class="fa fa-chevron-left"></i> 剑指阿里（day6）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/17/2017-07-17-Scala入门学习笔记一-List使用/" rel="prev" title="Scala入门学习笔记一 -- List">
-                Scala入门学习笔记一 -- List <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#博客诞生背景"><span class="nav-number">1.</span> <span class="nav-text">博客诞生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于我"><span class="nav-number">2.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于博客"><span class="nav-number">3.</span> <span class="nav-text">关于博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#集合与数组的对比"><span class="nav-number">1.</span> <span class="nav-text">集合与数组的对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java集合框架：Collection和Map"><span class="nav-number">2.</span> <span class="nav-text">Java集合框架：Collection和Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collection接口、子接口以及实现类"><span class="nav-number">3.</span> <span class="nav-text">Collection接口、子接口以及实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Collection接口"><span class="nav-number">3.1.</span> <span class="nav-text">Collection接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#List接口及其实现类——ArrayList"><span class="nav-number">3.2.</span> <span class="nav-text">List接口及其实现类——ArrayList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Set接口及其实现类——HashSet"><span class="nav-number">3.3.</span> <span class="nav-text">Set接口及其实现类——HashSet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map和HashMap"><span class="nav-number">4.</span> <span class="nav-text">Map和HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Map接口"><span class="nav-number">4.1.</span> <span class="nav-text">Map接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap类"><span class="nav-number">4.2.</span> <span class="nav-text">HashMap类</span></a></li></ol></li></ol></div>
             
 
           </div>
