@@ -267,7 +267,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/08/2018-06-08-HashMap底层原理及相关知识点/" itemprop="url">HashMap底层原理及相关知识点（未完待续）</a></h1>
+                <a class="post-title-link" href="/2018/06/08/2018-06-08-HashMap底层原理及相关知识点/" itemprop="url">HashMap底层原理及相关知识点</a></h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,124 字
+                  2,363 字
                 </span>
               
 
@@ -370,10 +370,9 @@
 
       
         
-          
-            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>HashMap应该算是面试中出现频率非常高的知识点了，之前对这个了解甚少，所以专门系统的学习了一下，下面将各知识点和自己的理解一起整理，便于以后复习~</p>
-<h4 id="一、HashMap原理"><a href="#一、HashMap原理" class="headerlink" title="一、HashMap原理"></a>一、HashMap原理</h4><p><strong>1、什么是HashMap？</strong></p>
-<p>哈希表，也称散列表，是一种通过key值来直接访问在内存中的存储的数据结构。 </p>
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>HashMap应该算是面试中出现频率非常高的知识点了，之前对这个了解甚少，所以专门系统的学习了一下，下面将各知识点和自己的理解一起整理，便于以后复习~</p>
+<h4 id="HashMap相关知识"><a href="#HashMap相关知识" class="headerlink" title="HashMap相关知识"></a>HashMap相关知识</h4><p><strong>1、什么是HashMap？</strong></p>
+<p>哈希表，也称散列表，是一种通过key值来直接访问在内存中的存储的数据结构。 HashMap是基于哈希表的Map接口实现的，它存储的是内容是键值对<key,value>映射。</key,value></p>
 <p><strong>2、HashMap特性？</strong></p>
 <ul>
 <li>HashMap存储键值对，实现快速存取数据；</li>
@@ -382,38 +381,13 @@
 <li>不保证有序(比如插入的顺序)。</li>
 <li>实现map接口。 </li>
 </ul>
-<p><strong>3、HashMap的原理，内部数据结构？</strong></p>
-<p>HashMap是基于hashing的原理，底层使用哈希表（数组 + 链表）实现。</p>
-<p>里边最重要的两个方法put、get，使用put(key, value)存储对象到HashMap中，使用get(key)从HashMap中获取对象。   </p>
-<p>存储对象时，我们将K/V传给put方法时，它调用hashCode计算hash从而得到bucket位置，进一步存储，HashMap会根据当前bucket的占用情况自动调整容量(超过Load Facotr则resize为原来的2倍)。</p>
-<p>获取对象时，我们将K传给get，它调用hashCode计算hash从而得到bucket位置，并进一步调用equals()方法确定键值对。</p>
-<p><strong>4、HashMap 中 put 方法过程</strong></p>
-<ol>
-<li>对key的hashCode做hash操作，然后再计算在bucket中的index；  </li>
-<li>如果没碰撞直接放到bucket里；  </li>
-<li>如果碰撞了，以链表的形式存在buckets后；   </li>
-<li>如果节点已经存在就替换old value(保证key的唯一性)   </li>
-<li>如果bucket满了(超过阈值，阈值=loadfactor*current capacity，load factor默认0.75)，就要resize。 </li>
-</ol>
-<p><strong>5、get()方法的工作原理</strong></p>
-<p>通过对key的hashCode()进行hashing，并计算下标( n-1 &amp; hash)，从而获得buckets的位置。如果产生碰撞，则利用key.equals()方法去链表中查找对应的节点。 </p>
-<p><strong>6、HashMap中hash函数怎么是是实现的？还有哪些 hash 的实现方式？</strong></p>
-<ul>
-<li>直接定址法：取关键字key的某个线性函数为散列地址，如Hash(key) = key  或 Hash(key)  = A*key+B；A,B为常数</li>
-<li>除留取余法：关键值除以比散列表长度小的素数所得的余数作为散列地址。Hash(key) = key % p;</li>
-<li>平均取中法：先计算构成关键码的标识符的内码的平方，然后按照散列表的大小取中间的若干位作为散列地址。</li>
-<li>折叠法：把关键码自左到右分为位数相等的几部分，每一部分的位数应与散列表地址位数相同，只有最后一部分的位数可以短一些。把这些部分的数据叠加起来，就可以得到具有关键码的记录的散列地址。分为移位法和分界法。</li>
-<li>随机数法：选择一个随机函数，取关键字的随机函数作为它的哈希地址。</li>
-<li>数学分析法：设有N个d位数，每一位可能有r种不同的符号。这r种不同的符号在各位上出现的频率不一定相同，可能在某些位上分布均匀些，每种符号出现的机会均等；在某些位上分布不均匀，只有某几种符号经常出现。可根据散列表的大小，选取其中各种符号分布均匀的若干位作为散列地址。</li>
-</ul>
-<p><strong>7、遇到哈希冲突/哈希碰撞 我们该如何处理呢？</strong></p>
-<ul>
-<li>线性探测：当不同的key值通过哈希函数映射到同一散列地址上时，检测当前地址的下一个地址是否可以插入，如果可以的话，就存在当前位置的下一个地址，否则，继续向下一个地址寻找，地址++。</li>
-<li>二次探测：是针对线性探测的一个改进，线性探测后插入的key值太集中，这样造成key值通过散列函数后还是无法正确的映射到地址上，太集中也会造成查找、删除时的效率低下。因此，通过二次探测的方法，取当前地址加上i^2，可以取到的新的地址就会稍微分散开。</li>
-<li>处理哈希冲突的开链法（哈希桶）：当用线性探测和二次探测时，总是在一个有限的哈希表中存储数据，当数据特别多时，效率就比较低。因此采用拉链法的方式来降低哈希冲突。 </li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/08/2018-06-08-HashMap底层原理及相关知识点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
