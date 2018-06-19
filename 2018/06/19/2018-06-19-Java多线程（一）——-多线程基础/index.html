@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="剑指阿里," />
+  <meta name="keywords" content="Java,多线程," />
 
 
 
@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="开始前先吐个槽明明是满脑子的想法，落在这文字上我却想不出一个稍显华丽的辞藻，只能默默感叹书到用时方恨少。就硬着头皮写下去吧哈哈哈~ 我想去阿里今天是想去阿里的第二天，元气满满！ 周六考完了软考之后，一个新的奋斗目标悄然占据我的灵魂高地，那就是：我想去阿里！问我为什么突然有这个想法，我认为完全可以总结为一时冲动。因为我还没有开始认真思考我怎么才能去阿里，就已经开始畅想在杭州租个loft一个人独立的小">
-<meta name="keywords" content="剑指阿里">
+<meta name="description" content="进程与线程进程进程是程序（任务）的执行过程，是动态性的。 持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。 线程线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。 同一进程之中可以有多个线程。 线程共享进程的资源。 进程与线程的区别和联系线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程">
+<meta name="keywords" content="Java,多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大型长篇励志求职纪实文——剑指阿里（序章）">
-<meta property="og:url" content="http://yoursite.com/2018/05/29/2018-05-29-剑指阿里（序章）/index.html">
+<meta property="og:title" content="Java多线程（一）—— 多线程基础">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/2018-06-19-Java多线程（一）——-多线程基础/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="开始前先吐个槽明明是满脑子的想法，落在这文字上我却想不出一个稍显华丽的辞藻，只能默默感叹书到用时方恨少。就硬着头皮写下去吧哈哈哈~ 我想去阿里今天是想去阿里的第二天，元气满满！ 周六考完了软考之后，一个新的奋斗目标悄然占据我的灵魂高地，那就是：我想去阿里！问我为什么突然有这个想法，我认为完全可以总结为一时冲动。因为我还没有开始认真思考我怎么才能去阿里，就已经开始畅想在杭州租个loft一个人独立的小">
-<meta property="og:updated_time" content="2018-05-29T17:01:02.000Z">
+<meta property="og:description" content="进程与线程进程进程是程序（任务）的执行过程，是动态性的。 持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。 线程线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。 同一进程之中可以有多个线程。 线程共享进程的资源。 进程与线程的区别和联系线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程">
+<meta property="og:image" content="http://yoursite.com/images/Thread方法.png">
+<meta property="og:image" content="http://yoursite.com/images/创建线程的两种方式.png">
+<meta property="og:image" content="http://yoursite.com/images/线程的生命周期.png">
+<meta property="og:updated_time" content="2018-06-19T15:31:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大型长篇励志求职纪实文——剑指阿里（序章）">
-<meta name="twitter:description" content="开始前先吐个槽明明是满脑子的想法，落在这文字上我却想不出一个稍显华丽的辞藻，只能默默感叹书到用时方恨少。就硬着头皮写下去吧哈哈哈~ 我想去阿里今天是想去阿里的第二天，元气满满！ 周六考完了软考之后，一个新的奋斗目标悄然占据我的灵魂高地，那就是：我想去阿里！问我为什么突然有这个想法，我认为完全可以总结为一时冲动。因为我还没有开始认真思考我怎么才能去阿里，就已经开始畅想在杭州租个loft一个人独立的小">
+<meta name="twitter:title" content="Java多线程（一）—— 多线程基础">
+<meta name="twitter:description" content="进程与线程进程进程是程序（任务）的执行过程，是动态性的。 持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。 线程线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。 同一进程之中可以有多个线程。 线程共享进程的资源。 进程与线程的区别和联系线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程">
+<meta name="twitter:image" content="http://yoursite.com/images/Thread方法.png">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/29/2018-05-29-剑指阿里（序章）/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/19/2018-06-19-Java多线程（一）——-多线程基础/"/>
 
 
 
 
 
-  <title>大型长篇励志求职纪实文——剑指阿里（序章） | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>Java多线程（一）—— 多线程基础 | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -252,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/2018-05-29-剑指阿里（序章）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/2018-06-19-Java多线程（一）——-多线程基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -269,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">大型长篇励志求职纪实文——剑指阿里（序章）</h1>
+          <h1 class="post-title" itemprop="name headline">Java多线程（一）—— 多线程基础</h1>
         
 
         <div class="post-meta">
@@ -281,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T23:25:36+08:00">
-                2018-05-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T23:24:59+08:00">
+                2018-06-19
               </time>
             
 
@@ -304,8 +308,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/剑指阿里/" itemprop="url" rel="index">
-                    <span itemprop="name">剑指阿里</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -335,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,042 字
+                  913 字
                 </span>
               
 
@@ -360,18 +364,43 @@
       
 
       
-        <h4 id="开始前先吐个槽"><a href="#开始前先吐个槽" class="headerlink" title="开始前先吐个槽"></a>开始前先吐个槽</h4><p>明明是满脑子的想法，落在这文字上我却想不出一个稍显华丽的辞藻，只能默默感叹书到用时方恨少。就硬着头皮写下去吧哈哈哈~</p>
-<h4 id="我想去阿里"><a href="#我想去阿里" class="headerlink" title="我想去阿里"></a>我想去阿里</h4><p>今天是想去阿里的第二天，元气满满！</p>
-<p>周六考完了软考之后，一个新的奋斗目标悄然占据我的灵魂高地，那就是：我想去阿里！问我为什么突然有这个想法，我认为完全可以总结为一时冲动。因为我还没有开始认真思考我怎么才能去阿里，就已经开始畅想在杭州租个loft一个人独立的小日子和阿里浓郁技术气氛下努力码code的我。当半夜十二点，这一天中我思维最敏捷最清醒的时刻到来，我开始严肃的思考这个目标的合理性和可行性。</p>
-<p>结果不出所料，我想出了一万个理由说服自己，支撑这个之前还被我定义为一时冲动的目标。世界那么大，我该出去看看，不限于阿里。排在第一的理由，大概是还没毕业的我有过强烈的去北京闯荡的念头，因为爱情的限制，因为父母的担忧，我做出了我认为是小小“牺牲”的决定，那就继续待在这个不用长大的家里吧。但是现在，我最依赖的人离开了，没有了爱情的我理所应当的需要长大然后自己照顾自己，顺便去实现以前小小的梦想。另外的还有某些人说我人格不独立对我产生了强烈的冲击，有年轻人就应该出去闯荡受点苦的鸡汤信条等等。</p>
-<p>现在的这份工作给我的影响很大，好像给我打开了一个新的世界的大门，让我开始明白了不该在一个小圈子里做个井底之蛙自我满足，该跳出来看看这外面的世界。原来大家都有那么高的学历，原来大家都经历丰富，原来大家人脉都那么广，原来大家都在不断地自我充电和学习，原来合作的公司都那么牛逼啊，原来项目数额也可以那么大，原来我只是渺小的我。来到这里后我自我否定的频率越来越高，也害怕自己会停滞不前。说到底，我担心我今天不做这个决定，再过几年我会后悔，却再也无能为力。</p>
-<p>所以趁年轻，趁有冲动且拼的动，出去玩玩吧小kitty。</p>
-  <a id="more"></a>
-<h4 id="我要去阿里"><a href="#我要去阿里" class="headerlink" title="我要去阿里"></a>我要去阿里</h4><p>为什么选阿里？理由如高考后单凭宿舍好坏决定去哪个大学一样，不喜欢北京没去过杭州，杭州还那么美，嗯阿里不错。我又去知乎刷了《在阿里工作是一番什么体验》的帖子，成功种草了阿里！像学校一样的工作氛围，优秀的同事，园林一样什么都有的园区，还有谁！</p>
-<p>就这样，我有了去阿里的决心，但我并没有能去阿里的信心。我的实力和阿里的要求相差很大，我自己再清楚不过了哭哭。但狮子座的女孩才不会认输，我要开始恶补恶补恶补！！！相信几个月之后的小kitty不再是今天的小kitty。</p>
-<h4 id="记录努力的过程"><a href="#记录努力的过程" class="headerlink" title="记录努力的过程"></a>记录努力的过程</h4><p>努力的道路上一定是由铺满荆棘到开满鲜花，这美好的过程该被记录下来。所以这大型长篇求职纪实文要开始连载啦，欢迎各位看官多多捧场。</p>
-<p>从今天开始，我将每天更新当日的心情和学习的内容，发布在‘剑指阿里’的标签里，激励自己一直前进。</p>
-<p>最后，痛饮一碗鸡汤，壮士一去兮不回头。无论最后结果如何，我相信这一定是一段不会后悔的旅程。小kitty，加油！</p>
+        <h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><h5 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h5><p>进程是程序（任务）的执行过程，是动态性的。</p>
+<p>持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。</p>
+<h5 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h5><p>线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。</p>
+<p>同一进程之中可以有多个线程。</p>
+<p>线程共享进程的资源。</p>
+<h5 id="进程与线程的区别和联系"><a href="#进程与线程的区别和联系" class="headerlink" title="进程与线程的区别和联系"></a>进程与线程的区别和联系</h5><p>线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程共享一片相同的内存空间。 </p>
+<h5 id="线程的交互"><a href="#线程的交互" class="headerlink" title="线程的交互"></a>线程的交互</h5><p>互斥与同步</p>
+<a id="more"></a>
+<h4 id="Java对线程的支持与实现"><a href="#Java对线程的支持与实现" class="headerlink" title="Java对线程的支持与实现"></a>Java对线程的支持与实现</h4><h5 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h5><p>Java对线程的支持主要体现在Thread类和Runnable接口上，它们都继承于java.lang包。它们有个共同的方法run()方法，这个方法提供了线程实际工作和执行的代码。　</p>
+<p>java.lang.Thread 类的实例就是一个线程但是它需要调用java.lang.Runnable接口来执行，由于线程类本身就是调用的Runnable接口所以你可以继承java.lang.Thread 类或者直接调用Runnable接口来重写run()方法实现线程。 </p>
+<p><img src="/images/Thread方法.png" alt="Thread方法"></p>
+<h5 id="Thread类和Runnable接口比较"><a href="#Thread类和Runnable接口比较" class="headerlink" title="Thread类和Runnable接口比较"></a>Thread类和Runnable接口比较</h5><p><img src="/images/创建线程的两种方式.png" alt="创建线程的两种方式"></p>
+<ul>
+<li>Runnable方式可以避免Thread方式由于Java单继承特性带来的缺陷（在Java中一个子类可以实现多个接口，但是只能继承一个父类）</li>
+<li>Runnable的代码可以被多个线程（Thread实例）共享，适合于多个线程处理同一个资源的情况。</li>
+</ul>
+<h5 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h5><p><img src="/images/线程的生命周期.png" alt="线程的生命周期"></p>
+<p>创建：新建一个线程对象，如 Thread thread = new Thread();</p>
+<p>就绪状态：创建了线程对象后，调用了线程的start()方法。（注：此时线程只是进入了线程队列，等待获取CPU服务，具备了运行的条件，但并不一定已经开始运行了）</p>
+<p>运行状态：处于就绪状态的线程，一旦获取了CPU资源，便进入到运行状态，开始执行run()方法里面的逻辑。</p>
+<p>终止：线程的run()方法执行完毕，或者线程调用了stop()方法，线程便进入中止状态。（注：目前stop()方法已经被摒弃了）</p>
+<p>阻塞状态：一个正在执行的线程在某些情况下，由于某种原因而暂时让出了CPU资源，暂停了自己的执行，则进入了阻塞状态，如调用了sleep()方法。</p>
+<h5 id="用户线程和守护线程"><a href="#用户线程和守护线程" class="headerlink" title="用户线程和守护线程"></a>用户线程和守护线程</h5><p>用户线程：</p>
+<ul>
+<li>运行在前台，执行具体任务</li>
+<li>程序的主线程、连接网络的子线程等都是用户线程</li>
+</ul>
+<p>守护线程：</p>
+<ul>
+<li>运行在后台，为其他前台线程服务</li>
+<li>特点：一旦所有用户线程都结束，守护线程会随JVM一起结束工作</li>
+<li>应用：数据库连接池中的监测线程、JVM虚拟机启动后的监测线程</li>
+<li>最常见的守护线程：垃圾回收线程</li>
+<li>如何设置守护线程：可以通过调用Thread类的setDaemon(true)方法来设置当前的线程为守护线程。</li>
+<li>注意事项：</li>
+<li>1、setDaemon(true)必须在start()方法之前调用，否则会抛出IllegalThreadStateException 异常。2、在守护线程中产生的新线程也为守护线程。3、不是所有的任务都可以分配给守护线程来执行，比如读写操作或者计算逻辑（因为守护线程会在所有用户线程结束后也结束工作）</li>
+</ul>
 
       
     </div>
@@ -389,7 +418,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/剑指阿里/" rel="tag"># 剑指阿里</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
           
         </div>
       
@@ -402,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/07/2018-04-07-五节点Nginx-PHP负载均衡架构的搭建/" rel="next" title="五节点Nginx+PHP负载均衡架构的搭建">
-                <i class="fa fa-chevron-left"></i> 五节点Nginx+PHP负载均衡架构的搭建
+              <a href="/2018/06/11/2018-06-11-剑指阿里（day7）/" rel="next" title="剑指阿里（day7）">
+                <i class="fa fa-chevron-left"></i> 剑指阿里（day7）
               </a>
             
           </div>
@@ -412,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/30/2018-05-30-剑指阿里（day1-0530）/" rel="prev" title="剑指阿里——学习计划（day1）">
-                剑指阿里——学习计划（day1） <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/19/2018-06-19-剑指阿里（day8）/" rel="prev" title="剑指阿里（day8）">
+                剑指阿里（day8） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -561,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#开始前先吐个槽"><span class="nav-number">1.</span> <span class="nav-text">开始前先吐个槽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我想去阿里"><span class="nav-number">2.</span> <span class="nav-text">我想去阿里</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我要去阿里"><span class="nav-number">3.</span> <span class="nav-text">我要去阿里</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#记录努力的过程"><span class="nav-number">4.</span> <span class="nav-text">记录努力的过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程与线程"><span class="nav-number">1.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程"><span class="nav-number">1.1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程"><span class="nav-number">1.2.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进程与线程的区别和联系"><span class="nav-number">1.3.</span> <span class="nav-text">进程与线程的区别和联系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的交互"><span class="nav-number">1.4.</span> <span class="nav-text">线程的交互</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java对线程的支持与实现"><span class="nav-number">2.</span> <span class="nav-text">Java对线程的支持与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的实现"><span class="nav-number">2.1.</span> <span class="nav-text">线程的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Thread类和Runnable接口比较"><span class="nav-number">2.2.</span> <span class="nav-text">Thread类和Runnable接口比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">线程的生命周期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户线程和守护线程"><span class="nav-number">2.4.</span> <span class="nav-text">用户线程和守护线程</span></a></li></ol></li></ol></div>
             
 
           </div>
