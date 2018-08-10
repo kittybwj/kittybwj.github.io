@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,JVM," />
 
 
 
@@ -79,18 +79,19 @@
 
 
 
-<meta name="description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
+<meta name="description" content="前言——为什么要学习JVMJava虚拟机是想要深入学习Java必须要接触的知识，同时也是Java工程师在面试中一定会遇到的知识方向，所以从今天开始开一个tag来记录JVM的学习。 “知其然”也要“知其所以然”，学习 Java 虚拟机的本质，更多是了解Java程序是如何被执行和优化的，为学习更核心的Java技术打好基础。 为什么 Java 要在虚拟机里运行？Java 作为一门高级程序语言，它的语法非">
+<meta name="keywords" content="Java,JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome to Kitty&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/index.html">
+<meta property="og:title" content="JVM学习（1）——Java代码如何运行">
+<meta property="og:url" content="http://yoursite.com/2018/08/10/2018-08-10-JVM学习（1）——Java代码如何运行/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
-<meta property="og:image" content="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2018-02-01T16:13:03.000Z">
+<meta property="og:description" content="前言——为什么要学习JVMJava虚拟机是想要深入学习Java必须要接触的知识，同时也是Java工程师在面试中一定会遇到的知识方向，所以从今天开始开一个tag来记录JVM的学习。 “知其然”也要“知其所以然”，学习 Java 虚拟机的本质，更多是了解Java程序是如何被执行和优化的，为学习更核心的Java技术打好基础。 为什么 Java 要在虚拟机里运行？Java 作为一门高级程序语言，它的语法非">
+<meta property="og:image" content="http://yoursite.com/images/JVM/java虚拟机.png">
+<meta property="og:updated_time" content="2018-08-10T17:18:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to Kitty&#39;s blog">
-<meta name="twitter:description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
-<meta name="twitter:image" content="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&fm=26&gp=0.jpg">
+<meta name="twitter:title" content="JVM学习（1）——Java代码如何运行">
+<meta name="twitter:description" content="前言——为什么要学习JVMJava虚拟机是想要深入学习Java必须要接触的知识，同时也是Java工程师在面试中一定会遇到的知识方向，所以从今天开始开一个tag来记录JVM的学习。 “知其然”也要“知其所以然”，学习 Java 虚拟机的本质，更多是了解Java程序是如何被执行和优化的，为学习更核心的Java技术打好基础。 为什么 Java 要在虚拟机里运行？Java 作为一门高级程序语言，它的语法非">
+<meta name="twitter:image" content="http://yoursite.com/images/JVM/java虚拟机.png">
 
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/10/2018-08-10-JVM学习（1）——Java代码如何运行/"/>
 
 
 
 
 
-  <title>Welcome to Kitty's blog | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>JVM学习（1）——Java代码如何运行 | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -253,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/2018-08-10-JVM学习（1）——Java代码如何运行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -270,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Welcome to Kitty's blog</h1>
+          <h1 class="post-title" itemprop="name headline">JVM学习（1）——Java代码如何运行</h1>
         
 
         <div class="post-meta">
@@ -282,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:45:17+08:00">
-                2017-07-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T22:49:04+08:00">
+                2018-08-10
               </time>
             
 
@@ -292,6 +293,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -314,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  401 字
+                  718 字
                 </span>
               
 
@@ -339,11 +362,18 @@
       
 
       
-        <p>Hello World ！喜大普奔！我的个人博客终于搭好啦！</p>
-<h3 id="博客诞生背景"><a href="#博客诞生背景" class="headerlink" title="博客诞生背景"></a>博客诞生背景</h3><p>本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照<a href="http://www.jumpbeandev.com/" target="_blank" rel="external">牛叔叔的博客</a>完成了搭建。终于，在这个星期的最后，又变回了乐观开心的小kitty。<br><a id="more"></a></p>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p><img src="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&amp;fm=26&amp;gp=0.jpg" alt="Kitty"></p>
-<p>我，一个喜欢Hello Kitty的小仙女，除了会写代码，哪儿哪儿都不像个程序员。<br>我，一个技术小白，但是我相信，小白总有一天会变成很厉害很厉害的人。<br>我，一个自认为每天都很开心并充满正能量的程序员鼓励师。除了被别人嘲笑技术差和客户又双叒要该需求，没有什么能影响我的心情。当然，前者会激励我进步，后者无解（此处配有微笑的表情）。<br>我，想做喜欢做的事，成为想成为的人。</p>
-<h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><p>这是一个技术博！这是一个技术博！这是一个技术博！<br>重要的事情说三遍~<br>希望不要变成小仙女的逛吃日常<br>加油加油！要变成技术大牛！</p>
+        <h4 id="前言——为什么要学习JVM"><a href="#前言——为什么要学习JVM" class="headerlink" title="前言——为什么要学习JVM"></a>前言——为什么要学习JVM</h4><p>Java虚拟机是想要深入学习Java必须要接触的知识，同时也是Java工程师在面试中一定会遇到的知识方向，所以从今天开始开一个tag来记录JVM的学习。</p>
+<p>“知其然”也要“知其所以然”，学习 Java 虚拟机的本质，更多是了解Java程序是如何被执行和优化的，为学习更核心的Java技术打好基础。</p>
+<h4 id="为什么-Java-要在虚拟机里运行？"><a href="#为什么-Java-要在虚拟机里运行？" class="headerlink" title="为什么 Java 要在虚拟机里运行？"></a>为什么 Java 要在虚拟机里运行？</h4><p>Java 作为一门高级程序语言，它的语法非常复杂，抽象程度也很高。因此，直接在硬件上运行这种复杂的程序并不现实。所以在运行 Java 程序之前，需要对其进行一番转换。</p>
+<p>这个转换具体是怎么操作的呢？当前的主流思路是：设计一个面向 Java 语言特性的虚拟机，并通过编译器将 Java 程序转换成该虚拟机所能识别的指令序列，也称 Java 字节码。</p>
+<p>Java 虚拟机可以由硬件实现，但更为常见的是在各个现有平台（如 Windows_x64、Linux_aarch64）上提供软件实现。这么做的意义在于，一旦一个程序被转换成 Java 字节码，那么它便可以在不同平台上的虚拟机实现里运行。这也就是我们经常说的“一次编写，到处运行”。java能跨平台是因为jvm能跨平台。</p>
+<p>虚拟机的另外一个好处是它带来了一个托管环境（Managed Runtime）。这个托管环境能够代替我们处理一些代码中冗长而且容易出错的部分。其中最广为人知的当属自动内存管理与垃圾回收。</p>
+<p>除此之外，托管环境还提供了诸如数组越界、动态类型、安全权限等等的动态检测，使我们免于书写这些无关业务逻辑的代码。</p>
+<h4 id="Java-虚拟机具体是怎样运行-Java-字节码的？"><a href="#Java-虚拟机具体是怎样运行-Java-字节码的？" class="headerlink" title="Java 虚拟机具体是怎样运行 Java 字节码的？"></a>Java 虚拟机具体是怎样运行 Java 字节码的？</h4><p>下面以目前使用范围最广的Java虚拟机HotSpot 虚拟机为例，从虚拟机以及底层硬件两个角度介绍Java 虚拟机具体是怎么运行 Java 字节码的。</p>
+<p>从虚拟机视角来看，执行 Java 代码首先需要将它编译而成的 class 文件加载到 Java 虚拟机中。加载后的 Java 类会被存放于方法区（Method Area）中。实际运行时，虚拟机会执行方法区内的代码。</p>
+<p>Java 虚拟机同样也在内存中划分出堆和栈来存储运行时数据。</p>
+<p>Java 虚拟机会将栈细分为面向 Java 方法的 Java 方法栈，面向本地方法（用 C++ 写的 native 方法）的本地方法栈，以及存放各个线程执行位置的 PC 寄存器。</p>
+<p><img src="/images/JVM/java虚拟机.png" alt="java虚拟机"></p>
 
       
     </div>
@@ -359,6 +389,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
 
       
       
@@ -368,15 +406,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/10/2018-08-10-剑指阿里（day12）/" rel="next" title="剑指阿里（day12）">
+                <i class="fa fa-chevron-left"></i> 剑指阿里（day12）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/17/2017-07-17-Scala入门学习笔记一-List使用/" rel="prev" title="Scala入门学习笔记一 -- List">
-                Scala入门学习笔记一 -- List <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#博客诞生背景"><span class="nav-number">1.</span> <span class="nav-text">博客诞生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于我"><span class="nav-number">2.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于博客"><span class="nav-number">3.</span> <span class="nav-text">关于博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言——为什么要学习JVM"><span class="nav-number">1.</span> <span class="nav-text">前言——为什么要学习JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么-Java-要在虚拟机里运行？"><span class="nav-number">2.</span> <span class="nav-text">为什么 Java 要在虚拟机里运行？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-虚拟机具体是怎样运行-Java-字节码的？"><span class="nav-number">3.</span> <span class="nav-text">Java 虚拟机具体是怎样运行 Java 字节码的？</span></a></li></ol></div>
             
 
           </div>
