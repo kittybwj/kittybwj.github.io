@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,JVM," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
+<meta name="description" content="Java虚拟机中，数据类型可以分为两类：基本类型和引用类型。基本类型的变量保存原始值，即：他代表的值就是数值本身；而引用类型的变量保存引用值。“引用值”代表了某个对象的引用，而不是对象本身，对象本身存放在这个引用值所表示的地址的位置。 Java虚拟机用不同的字节码指令来操作不同的数据类型 。">
+<meta name="keywords" content="Java,JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome to Kitty&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/index.html">
+<meta property="og:title" content="JVM学习（3）—— Java的基本数据类型">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/2018-08-12-JVM学习（3）——-Java的基本数据类型/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
-<meta property="og:image" content="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2018-02-01T16:13:03.000Z">
+<meta property="og:description" content="Java虚拟机中，数据类型可以分为两类：基本类型和引用类型。基本类型的变量保存原始值，即：他代表的值就是数值本身；而引用类型的变量保存引用值。“引用值”代表了某个对象的引用，而不是对象本身，对象本身存放在这个引用值所表示的地址的位置。 Java虚拟机用不同的字节码指令来操作不同的数据类型 。">
+<meta property="og:image" content="http://yoursite.com/images/JVM/数据类型.jpg">
+<meta property="og:image" content="http://yoursite.com/images/JVM/基本数据类型.png">
+<meta property="og:image" content="http://yoursite.com/images/JVM/堆和栈.png">
+<meta property="og:updated_time" content="2018-08-13T08:52:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to Kitty&#39;s blog">
-<meta name="twitter:description" content="Hello World ！喜大普奔！我的个人博客终于搭好啦！ 博客诞生背景本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照牛叔叔的博客完成了搭建。终于，在这">
-<meta name="twitter:image" content="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&fm=26&gp=0.jpg">
+<meta name="twitter:title" content="JVM学习（3）—— Java的基本数据类型">
+<meta name="twitter:description" content="Java虚拟机中，数据类型可以分为两类：基本类型和引用类型。基本类型的变量保存原始值，即：他代表的值就是数值本身；而引用类型的变量保存引用值。“引用值”代表了某个对象的引用，而不是对象本身，对象本身存放在这个引用值所表示的地址的位置。 Java虚拟机用不同的字节码指令来操作不同的数据类型 。">
+<meta name="twitter:image" content="http://yoursite.com/images/JVM/数据类型.jpg">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/12/2018-08-12-JVM学习（3）——-Java的基本数据类型/"/>
 
 
 
 
 
-  <title>Welcome to Kitty's blog | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>JVM学习（3）—— Java的基本数据类型 | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -253,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/Welcome-to-Kitty-s-blog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/2018-08-12-JVM学习（3）——-Java的基本数据类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -270,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Welcome to Kitty's blog</h1>
+          <h1 class="post-title" itemprop="name headline">JVM学习（3）—— Java的基本数据类型</h1>
         
 
         <div class="post-meta">
@@ -282,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T10:45:17+08:00">
-                2017-07-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T21:39:55+08:00">
+                2018-08-12
               </time>
             
 
@@ -292,6 +295,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -314,7 +339,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  401 字
+                  1,197 字
                 </span>
               
 
@@ -339,11 +364,42 @@
       
 
       
-        <p>Hello World ！喜大普奔！我的个人博客终于搭好啦！</p>
-<h3 id="博客诞生背景"><a href="#博客诞生背景" class="headerlink" title="博客诞生背景"></a>博客诞生背景</h3><p>本来搭建博客这事并没有排上日程，但是这周受到的刺激太多了。先是牛叔叔把招聘面试的问题问了我几个发现自己几乎都不会，再是客户接二连三的更改需求让我白费了好几天的工时，心情可谓是郁闷至极。但是接触scala做了个小项目的过程似乎又点燃了我小小的斗志，趁着激情劲儿没有消退，赶快买了自己的域名，参照<a href="http://www.jumpbeandev.com/" target="_blank" rel="external">牛叔叔的博客</a>完成了搭建。终于，在这个星期的最后，又变回了乐观开心的小kitty。<br><a id="more"></a></p>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><p><img src="http://img4.imgtn.bdimg.com/it/u=1471687631,2883453861&amp;fm=26&amp;gp=0.jpg" alt="Kitty"></p>
-<p>我，一个喜欢Hello Kitty的小仙女，除了会写代码，哪儿哪儿都不像个程序员。<br>我，一个技术小白，但是我相信，小白总有一天会变成很厉害很厉害的人。<br>我，一个自认为每天都很开心并充满正能量的程序员鼓励师。除了被别人嘲笑技术差和客户又双叒要该需求，没有什么能影响我的心情。当然，前者会激励我进步，后者无解（此处配有微笑的表情）。<br>我，想做喜欢做的事，成为想成为的人。</p>
-<h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><p>这是一个技术博！这是一个技术博！这是一个技术博！<br>重要的事情说三遍~<br>希望不要变成小仙女的逛吃日常<br>加油加油！要变成技术大牛！</p>
+        <p>Java虚拟机中，数据类型可以分为两类：基本类型和引用类型。基本类型的变量保存原始值，即：他代表的值就是数值本身；而引用类型的变量保存引用值。“引用值”代表了某个对象的引用，而不是对象本身，对象本身存放在这个引用值所表示的地址的位置。</p>
+<p>Java虚拟机用不同的字节码指令来操作不同的数据类型 。</p>
+<p><img src="/images/JVM/数据类型.jpg" alt="数据类型"></p>
+<a id="more"></a>
+<h4 id="Java-的基本类型"><a href="#Java-的基本类型" class="headerlink" title="Java 的基本类型"></a>Java 的基本类型</h4><p>原始类型又分为三类：数值类型（Numberic Types）、布尔类型（Boolean Type）、ReturnAddress类型；数值类型又可以细化为整型（Integral Types）和浮点型（Floating-Point Types）。</p>
+<p><img src="/images/JVM/基本数据类型.png" alt="基本数据类型"></p>
+<p>整型：</p>
+<ul>
+<li>byte：8位 有符号 二进制补码整数，取值范围[-27,27-1]，默认值为零；</li>
+<li>short：16位 有符号 二进制补码整数，取值范围[-215,215-1]，默认值为零；</li>
+<li>int：32位 有符号 二进制补码整数，取值范围[-231,231-1]，默认值为零；</li>
+<li>long：64位 有符号 二进制补码整数，取值范围[-263,263-1]，默认值为零；</li>
+<li>char：16位 无符号 UTF-16编码Unicode值，取值范围[0,65535]默认值为null（’\u0000’）；</li>
+</ul>
+<p>浮点型：</p>
+<ul>
+<li>float：32位 单精度浮点数集合，默认值正数零；</li>
+<li>double：64位 双精度浮点数集合，默认值为正数零；</li>
+</ul>
+<p>布尔型：</p>
+<ul>
+<li>boolean [1] ：取值范围[true,false]，默认值为false；</li>
+</ul>
+<p>returnAddress类型：</p>
+<ul>
+<li>returnAddress [^2]：表示一条字节码指令的操作码，在JVM支持的原始类型中只有returnAddress类型不能直接与Java语言的数据类型对应的。</li>
+</ul>
+<h4 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h4><p>Java虚拟机有三种引用类型：类类型（Class Types）、数组类型（Array Types）、接口类型（Interface Types），分别由类实例、数组实例及实现了某个接口的类实例或数组实例动态创建。此外，还有一个特殊值null，不指向任何对象时，引用类型的值就是null，同时，null也是引用类型的默认值。</p>
+<p>对于数组类型，还包含一个单一维度的组件类型（Component Type），组件类型可以是数组、原始类型、类类型或者接口类型。当组件类型是数组类型时，继续重复取这个数组的组件类型，最后一层组件类型一定是非数组，这也是该数组类型的元素类型（Element Type）。这也是多维数组的实现形式。</p>
+<h4 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a>堆和栈</h4><p><img src="/images/JVM/堆和栈.png" alt="堆和栈"></p>
+<p><strong>栈是运行时的单位，而堆是存储的单位。</strong></p>
+<p>栈解决程序的运行问题，即程序如何执行，或者说如何处理数据；堆解决的是数据存储的问题，即数据怎么放、放在哪儿。</p>
+<p>在Java中一个线程就会相应有一个线程栈与之对应，这点很容易理解，因为不同的线程执行逻辑有所不同，因此需要一个独立的线程栈。<strong>而堆则是所有线程共享的。</strong>栈因为是运行单位，因此里面存储的信息都是跟当前线程（或程序）相关信息的。<strong>包括局部变量、程序运行状态、方法返回值等等；而堆只负责存储对象信息。</strong></p>
+<h4 id="堆中存什么？栈中存什么？"><a href="#堆中存什么？栈中存什么？" class="headerlink" title="堆中存什么？栈中存什么？"></a>堆中存什么？栈中存什么？</h4><p>堆中存的是对象。栈中存的是基本数据类型和堆中对象的引用。一个对象的大小是不可估计的，或者说是可以动态变化的，但是在栈中，一个对象只对应了一个4btye的引用（堆栈分离的好处：））。</p>
+<h4 id="为什么不把基本类型放堆中呢？"><a href="#为什么不把基本类型放堆中呢？" class="headerlink" title="为什么不把基本类型放堆中呢？"></a>为什么不把基本类型放堆中呢？</h4><p>因为其占用的空间一般是1~8个字节——需要空间比较少，而且因为是基本类型，所以不会出现动态增长的情况——长度固定，因此栈中存储就够了，如果把他存在堆中是没有什么意义的。可以这么说，基本类型和对象的引用都是存放在栈中，而且都是几个字节的一个数，因此在程序运行时，他们的处理方式是统一的。但是基本类型、对象引用和对象本身就有所区别了，因为一个是栈中的数据一个是堆中的数据。最常见的一个问题就是，Java中参数传递时的问题。</p>
+<p>除 long 和 double 外，其他基本类型与引用类型在解释执行的方法栈帧中占用的大小是一致的，但它们在堆中占用的大小确不同。在将 boolean、byte、char 以及 short 的值存入字段或者数组单元时，Java 虚拟机会进行掩码操作。在读取时，Java 虚拟机则会将其扩展为 int 类型。</p>
 
       
     </div>
@@ -359,6 +415,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
 
       
       
@@ -368,15 +432,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/11/2018-08-11-JVM学习（2）——java代码如何在虚拟机中运行/" rel="next" title="JVM学习（2）——java代码如何在虚拟机中运行">
+                <i class="fa fa-chevron-left"></i> JVM学习（2）——java代码如何在虚拟机中运行
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/17/2017-07-17-Scala入门学习笔记一-List使用/" rel="prev" title="Scala入门学习笔记一 -- List">
-                Scala入门学习笔记一 -- List <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#博客诞生背景"><span class="nav-number">1.</span> <span class="nav-text">博客诞生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于我"><span class="nav-number">2.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于博客"><span class="nav-number">3.</span> <span class="nav-text">关于博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-的基本类型"><span class="nav-number">1.</span> <span class="nav-text">Java 的基本类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用数据类型"><span class="nav-number">2.</span> <span class="nav-text">引用数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆和栈"><span class="nav-number">3.</span> <span class="nav-text">堆和栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆中存什么？栈中存什么？"><span class="nav-number">4.</span> <span class="nav-text">堆中存什么？栈中存什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不把基本类型放堆中呢？"><span class="nav-number">5.</span> <span class="nav-text">为什么不把基本类型放堆中呢？</span></a></li></ol></div>
             
 
           </div>
