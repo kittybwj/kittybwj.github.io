@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/images/mysql_5.png">
 <meta property="og:image" content="http://yoursite.com/images/mysql_6.png">
 <meta property="og:image" content="http://yoursite.com/images/mysql_7.png">
-<meta property="og:updated_time" content="2018-05-29T14:53:34.000Z">
+<meta property="og:updated_time" content="2018-09-18T02:47:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linux上，使用MySQL的yum仓库，安装MySQL">
 <meta name="twitter:description" content="参考文章： https://dev.mysql.com/doc/refman/5.6/en/linux-installation-yum-repo.html 官方文档  安装步骤：1、远程登录服务器1ssh xx.xxx.xx.xxx -l root 2、去指定目录，下载MySQL提供的RPM包 rpm包版本：https://dev.mysql.com/downloads/repo/yum/  查">
@@ -343,7 +343,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  607 字
+                  753 字
                 </span>
               
 
@@ -427,7 +427,11 @@
 </ul>
 <h4 id="9、修改字符集"><a href="#9、修改字符集" class="headerlink" title="9、修改字符集"></a>9、修改字符集</h4><p>mysql配置文件/etc/my.cnf中加入<code>default-character-set=utf8</code></p>
 <h4 id="10、创建root管理员"><a href="#10、创建root管理员" class="headerlink" title="10、创建root管理员"></a>10、创建root管理员</h4><p><code>mysqladmin -u root password *******</code></p>
+<ul>
+<li>在mysql官方文档里找到答案了，原来mysql会为root生成一个默认密码，并且存储在log文件里。通过<strong>sudo grep ‘temporary password’ /var/log/mysqld.log</strong>可以看到这个密码。</li>
+</ul>
 <p>登录：<br><code>mysql -u root -p</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 获取临时密码</div><div class="line">grep &apos;temporary password&apos; /var/log/mysqld.log</div><div class="line"># 使用临时密码登录</div><div class="line">mysql -u root -p</div><div class="line"># 修改root账户的密码</div><div class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;123456&apos;;</div><div class="line">#如果只是修改为一个简单的密码，会报以下错误：</div><div class="line">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</div><div class="line">#此时应修改validate_password_policy参数的值</div><div class="line">mysql&gt; set global validate_password_policy=0;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure>
 <h4 id="10、允许远程访问设置"><a href="#10、允许远程访问设置" class="headerlink" title="10、允许远程访问设置"></a>10、允许远程访问设置</h4><ul>
 <li>开放防火墙的端口号</li>
 <li>mysql增加权限：mysql库中的user表新增一条记录host为“%”，user为“root”。</li>
@@ -563,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

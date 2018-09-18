@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,Spring," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="转眼又是新的一年了，懒癌晚期的我逼迫自己来更这新的一年的第一篇博客。首先，先祝愿自己在这美好的2018年，在25岁这个转折点，一切顺利，健康快乐的长大！  既然是新的一年，还是要定几个小目标的！  1、今年要读50本书！  2、每周更新一篇技术博客！  3、LeetCode刷题！  4、更自律，更勇敢！  想到什么再来补充吧~一定要努力实现呀小Kitty！！！">
+<meta name="description" content="Bean的自动装配（Autowiring） no – 缺省情况下，自动配置是通过“ref”属性手动设定。 byName – 根据属性名称自动装配。此选项将检查容器并根据名字查找与属性完全一致的bean，如果一个bean的名称和其他bean属性的名称是一样的，将会自装配它。 byType – 按数据类型自动装配。如果一个bean的数据类型是用其它bean属性的数据类型，兼容并自动装配它。和bean的">
+<meta name="keywords" content="Java,Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018年的第一篇博客">
-<meta property="og:url" content="http://yoursite.com/2018/02/02/2018-02-02-2018年的第一篇博客/index.html">
+<meta property="og:title" content="Spring学习（二）">
+<meta property="og:url" content="http://yoursite.com/2018/09/18/2018-09-18-Spring学习（二）/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="转眼又是新的一年了，懒癌晚期的我逼迫自己来更这新的一年的第一篇博客。首先，先祝愿自己在这美好的2018年，在25岁这个转折点，一切顺利，健康快乐的长大！  既然是新的一年，还是要定几个小目标的！  1、今年要读50本书！  2、每周更新一篇技术博客！  3、LeetCode刷题！  4、更自律，更勇敢！  想到什么再来补充吧~一定要努力实现呀小Kitty！！！">
-<meta property="og:updated_time" content="2018-02-01T16:04:19.000Z">
+<meta property="og:description" content="Bean的自动装配（Autowiring） no – 缺省情况下，自动配置是通过“ref”属性手动设定。 byName – 根据属性名称自动装配。此选项将检查容器并根据名字查找与属性完全一致的bean，如果一个bean的名称和其他bean属性的名称是一样的，将会自装配它。 byType – 按数据类型自动装配。如果一个bean的数据类型是用其它bean属性的数据类型，兼容并自动装配它。和bean的">
+<meta property="og:updated_time" content="2018-09-18T16:54:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018年的第一篇博客">
-<meta name="twitter:description" content="转眼又是新的一年了，懒癌晚期的我逼迫自己来更这新的一年的第一篇博客。首先，先祝愿自己在这美好的2018年，在25岁这个转折点，一切顺利，健康快乐的长大！  既然是新的一年，还是要定几个小目标的！  1、今年要读50本书！  2、每周更新一篇技术博客！  3、LeetCode刷题！  4、更自律，更勇敢！  想到什么再来补充吧~一定要努力实现呀小Kitty！！！">
+<meta name="twitter:title" content="Spring学习（二）">
+<meta name="twitter:description" content="Bean的自动装配（Autowiring） no – 缺省情况下，自动配置是通过“ref”属性手动设定。 byName – 根据属性名称自动装配。此选项将检查容器并根据名字查找与属性完全一致的bean，如果一个bean的名称和其他bean属性的名称是一样的，将会自装配它。 byType – 按数据类型自动装配。如果一个bean的数据类型是用其它bean属性的数据类型，兼容并自动装配它。和bean的">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/02/2018-02-02-2018年的第一篇博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/18/2018-09-18-Spring学习（二）/"/>
 
 
 
 
 
-  <title>2018年的第一篇博客 | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>Spring学习（二） | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -251,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/2018-02-02-2018年的第一篇博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/2018-09-18-Spring学习（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -268,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2018年的第一篇博客</h1>
+          <h1 class="post-title" itemprop="name headline">Spring学习（二）</h1>
         
 
         <div class="post-meta">
@@ -280,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-02T00:03:24+08:00">
-                2018-02-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T23:47:36+08:00">
+                2018-09-18
               </time>
             
 
@@ -290,6 +291,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -312,7 +335,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  131 字
+                  453 字
                 </span>
               
 
@@ -337,7 +360,24 @@
       
 
       
-        <p>  转眼又是新的一年了，懒癌晚期的我逼迫自己来更这新的一年的第一篇博客。首先，先祝愿自己在这美好的2018年，在25岁这个转折点，一切顺利，健康快乐的长大！<br>  既然是新的一年，还是要定几个小目标的！<br>  1、今年要读50本书！<br>  2、每周更新一篇技术博客！<br>  3、LeetCode刷题！<br>  4、更自律，更勇敢！<br>  想到什么再来补充吧~一定要努力实现呀小Kitty！！！</p>
+        <h4 id="Bean的自动装配（Autowiring）"><a href="#Bean的自动装配（Autowiring）" class="headerlink" title="Bean的自动装配（Autowiring）"></a>Bean的自动装配（Autowiring）</h4><ul>
+<li>no – 缺省情况下，自动配置是通过“ref”属性手动设定。</li>
+<li>byName – 根据属性名称自动装配。此选项将检查容器并根据名字查找与属性完全一致的bean，如果一个bean的名称和其他bean属性的名称是一样的，将会自装配它。</li>
+<li>byType – 按数据类型自动装配。如果一个bean的数据类型是用其它bean属性的数据类型，兼容并自动装配它。和bean的id无关。</li>
+<li>constructor – 与byType方式类似，不同之处在于它应用与构造器参数。如果容器中没有找到与构造器参数类型一致的bean，那么抛出异常。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</div><div class="line">       default-autowire=&quot;byName&quot;</div><div class="line">&gt;</div><div class="line"></div><div class="line">    &lt;bean id=&quot;autoWiringDAO&quot; class=&quot;com.test.AutoWiringDAO&quot;&gt;&lt;/bean&gt;</div><div class="line">    &lt;bean id=&quot;autoWiringService&quot; class=&quot;com.test.AutoWiringService&quot;&gt;</div><div class="line">        &lt;!--如果是default-autowire=&quot;byName&quot; 不需要设置以下--&gt;</div><div class="line">        &lt;!--&lt;property name=&quot;autoWiringDAO&quot; ref=&quot;autoWiringDAO&quot;&gt;&lt;/property&gt;--&gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h4><p><strong>Resource：针对资源文件的统一接口</strong></p>
+<p>-UrlResource：URL对应的资源，根据一个URL地址即可创建</p>
+<p>-ClassPathResource：获取类路径下的资源文件</p>
+<p>-FileSystemResource：获取文件系统里面的资源</p>
+<p>-ServletContextResource：ServletContext封装的资源，用于访问ServletContext环境下的资源（需导入spring-web.jar，需在web环境中测试。）</p>
+<p>-InputStreamResource：针对于输入流封装的资源</p>
+<p>-ByteArrayResource：针对于字节数组封装的资源</p>
+<p><strong>ResourceLoader</strong></p>
+<p>spring的IOC容器中，所有的Application context都实现了ResourceLoader这个接口，所有的application context都可以用getResource()方法来获取Resource实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class MoocResource implements ApplicationContextAware&#123;</div><div class="line"></div><div class="line">    private ApplicationContext applicationContext;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException &#123;</div><div class="line">        this.applicationContext = applicationContext;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void resource() throws IOException &#123;</div><div class="line">        Resource resource = applicationContext.getResource(&quot;file:/Users/xxx/Desktop/ssm/springResource/src/com/test/config.txt&quot;);</div><div class="line">        System.out.println(resource.getFilename());</div><div class="line">        System.out.println(resource.contentLength());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -353,6 +393,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
+      
 
       
       
@@ -362,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/22/2017-07-22-PHP进阶之路——亿级PV网站架构学习/" rel="next" title="PHP进阶之路——亿级PV网站架构学习">
-                <i class="fa fa-chevron-left"></i> PHP进阶之路——亿级PV网站架构学习
+              <a href="/2018/09/17/2018-09-17-剑指阿里（day15）/" rel="next" title="剑指阿里（day15）">
+                <i class="fa fa-chevron-left"></i> 剑指阿里（day15）
               </a>
             
           </div>
@@ -371,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/07/2018-04-07-在Linux上，使用MySQL的yum仓库，安装MySQL/" rel="prev" title="在Linux上，使用MySQL的yum仓库，安装MySQL">
-                在Linux上，使用MySQL的yum仓库，安装MySQL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -502,6 +555,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的自动装配（Autowiring）"><span class="nav-number">1.</span> <span class="nav-text">Bean的自动装配（Autowiring）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource"><span class="nav-number">2.</span> <span class="nav-text">Resource</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
