@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="spring注解">
+<meta name="description" content="Bean 管理的注解从Spring3.0开始，Spring JavaConfig项目提供了很多特性，包括使用java而不是XML定义bean，比如@Configuration、@Bean、@Import、@DependsOn  @Component是一个通用注解，可适用于任何bean @Repository通常用于注解DAO类，即持久层 @Service通常用于注解Service类，即服务层 @C">
 <meta name="keywords" content="Java,Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring学习（三）">
 <meta property="og:url" content="http://www.biwenjie.com/2018/09/19/2018-09-19-Spring学习（三）/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="spring注解">
-<meta property="og:updated_time" content="2018-09-19T06:07:49.000Z">
+<meta property="og:description" content="Bean 管理的注解从Spring3.0开始，Spring JavaConfig项目提供了很多特性，包括使用java而不是XML定义bean，比如@Configuration、@Bean、@Import、@DependsOn  @Component是一个通用注解，可适用于任何bean @Repository通常用于注解DAO类，即持久层 @Service通常用于注解Service类，即服务层 @C">
+<meta property="og:updated_time" content="2018-09-19T17:05:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring学习（三）">
-<meta name="twitter:description" content="spring注解">
+<meta name="twitter:description" content="Bean 管理的注解从Spring3.0开始，Spring JavaConfig项目提供了很多特性，包括使用java而不是XML定义bean，比如@Configuration、@Bean、@Import、@DependsOn  @Component是一个通用注解，可适用于任何bean @Repository通常用于注解DAO类，即持久层 @Service通常用于注解Service类，即服务层 @C">
 
 
 
@@ -335,7 +335,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3 字
+                  616 字
                 </span>
               
 
@@ -360,7 +360,34 @@
       
 
       
-        <h4 id="spring注解"><a href="#spring注解" class="headerlink" title="spring注解"></a>spring注解</h4>
+        <h4 id="Bean-管理的注解"><a href="#Bean-管理的注解" class="headerlink" title="Bean 管理的注解"></a>Bean 管理的注解</h4><p>从Spring3.0开始，Spring JavaConfig项目提供了很多特性，包括使用java而不是XML定义bean，比如@Configuration、@Bean、@Import、@DependsOn</p>
+<ul>
+<li>@Component是一个通用注解，可适用于任何bean</li>
+<li>@Repository通常用于注解DAO类，即持久层</li>
+<li>@Service通常用于注解Service类，即服务层</li>
+<li>@Controller通常用于注解Controller类，即控制层（MVC）</li>
+</ul>
+<p><strong>元注解（Meta-annotations）</strong></p>
+<p>许多Spring提供的注解可以作为自己的代码，即”元数据注解“，元注解是简单的注解，可以应用到另一个注解。除了value()以外，还可以有其他的属性，允许定制。</p>
+<p><strong>类的自动检测及Bean的注册</strong></p>
+<p>Spring可以自动检测类并注册Bean到ApplicationContext中。有的注解是类的注解，有点注解是方法的注解。</p>
+<p>为了能够检测类并注册相应的Bean，需要在xml文件中配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</div><div class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </div><div class="line">       http://www.springframework.org/schema/beans/spring-beans.xsd </div><div class="line">       http://www.springframework.org/schema/context </div><div class="line">       http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</div><div class="line">    //配置如下（base-package扫描包下的类）</div><div class="line">    &lt;context:component-scan base-package=&quot;com.test&quot;&gt;&lt;/context:component-scan&gt;</div><div class="line">    </div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<p><context:component-scan>包含了<context:annotation-config>，通常在使用前者后，不再使用后者。</context:annotation-config></context:component-scan></p>
+<p><strong>使用过滤器进行自定义扫描</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;context:component-scan base-package=&quot;com.test&quot;&gt;</div><div class="line">	//包含过滤器</div><div class="line">	&lt;context:include-filter type=&quot;regex&quot; expression=&quot;.*Stub.*Repository&quot;/&gt;</div><div class="line">	//排除过滤器</div><div class="line">	&lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Repository&quot;/&gt;</div><div class="line">&lt;/context:component-scan&gt;</div><div class="line">	//type类型还有很多</div></pre></td></tr></table></figure>
+<p><strong>定义Bean</strong></p>
+<p>扫描过程中组件被自动检测，Bean的名称是由BeanNameGenerator生成的。@Component、@Repository、@Service、@Controller都有一个name属性来显式设置Bean Name。</p>
+<p><strong>作用域</strong></p>
+<p>scope默认值是singleton，@Scope注解可设置Bean的作用域。</p>
+<p><strong>例子</strong></p>
+<p>Beans.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</div><div class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans</div><div class="line">       http://www.springframework.org/schema/beans/spring-beans.xsd</div><div class="line">       http://www.springframework.org/schema/context</div><div class="line">       http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;</div><div class="line"></div><div class="line">    &lt;context:component-scan base-package=&quot;com.test&quot;&gt;&lt;/context:component-scan&gt;</div><div class="line"></div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<p>BeanAnnotation.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package com.test;</div><div class="line"></div><div class="line">import org.springframework.context.annotation.Scope;</div><div class="line">import org.springframework.stereotype.Component;</div><div class="line"></div><div class="line">@Scope(&quot;prototype&quot;)</div><div class="line">@Component</div><div class="line">//@Component(&quot;bean&quot;)</div><div class="line">public class BeanAnnotation &#123;</div><div class="line">    public void say(String word)&#123;</div><div class="line">        System.out.println(&quot;BeanAnnotation:&quot;+word);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>MainApp.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class MainApp &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;Beans.xml&quot;);</div><div class="line">        BeanAnnotation beanAnnotation = (BeanAnnotation)context.getBean(&quot;beanAnnotation&quot;);</div><div class="line">        //自定义name属性</div><div class="line">//        BeanAnnotation beanAnnotation = (BeanAnnotation)context.getBean(&quot;bean&quot;);</div><div class="line">        beanAnnotation.say(&quot;hello world:&quot;+beanAnnotation.hashCode());</div><div class="line">		//测试作用域</div><div class="line">        BeanAnnotation beanAnnotation2 = (BeanAnnotation)context.getBean(&quot;beanAnnotation&quot;);</div><div class="line">        beanAnnotation2.say(&quot;hello world:&quot;+beanAnnotation2.hashCode());</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -576,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#spring注解"><span class="nav-number">1.</span> <span class="nav-text">spring注解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean-管理的注解"><span class="nav-number">1.</span> <span class="nav-text">Bean 管理的注解</span></a></li></ol></div>
             
 
           </div>
