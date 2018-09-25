@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="剑指阿里," />
+  <meta name="keywords" content="Java,Spring," />
 
 
 
@@ -79,20 +79,17 @@
 
 
 
-<meta name="description" content="最新的学习计划和日更决心学习Spring和Spring MVC框架的过程非常的枯燥，尤其是再刚开始看IOC的时候，竟然看着看着睡着了。所以准备和Java虚拟机方面的知识并行着学习，来保证学习的动力和趣味性（emmmmm…趣味在寻找中…）。 昨天在极客时间app上选择了两门课程来进行学习：  《深入拆解Java虚拟机》    《Java核心技术36讲》   所以所以，我要日更博客啦！！！嗯嗯嗯！！！">
-<meta name="keywords" content="剑指阿里">
+<meta name="description" content="基于Java的容器注解@Bean@Bean用于标识用于配置和初始化一个由SpringIOC容器管理的新对象的方法，类似于XML文件中的 可以在Spring的@Conponent注解的类中用@Bean注解任何一个方法（仅仅是可以）。通常使用的是@Configuration。 @Bean可以自定义bean的name、init-method、destroy-method。">
+<meta name="keywords" content="Java,Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="剑指阿里（day12）">
-<meta property="og:url" content="http://www.biwenjie.com/2018/08/10/2018-08-10-剑指阿里（day12）/index.html">
+<meta property="og:title" content="Spring学习（五）">
+<meta property="og:url" content="http://www.biwenjie.com/2018/09/25/2018-09-25-Spring学习（五）/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="最新的学习计划和日更决心学习Spring和Spring MVC框架的过程非常的枯燥，尤其是再刚开始看IOC的时候，竟然看着看着睡着了。所以准备和Java虚拟机方面的知识并行着学习，来保证学习的动力和趣味性（emmmmm…趣味在寻找中…）。 昨天在极客时间app上选择了两门课程来进行学习：  《深入拆解Java虚拟机》    《Java核心技术36讲》   所以所以，我要日更博客啦！！！嗯嗯嗯！！！">
-<meta property="og:image" content="http://www.biwenjie.com/images/深入拆解Java虚拟机.jpg">
-<meta property="og:image" content="http://www.biwenjie.com/images/Java核心技术36讲.jpg">
-<meta property="og:updated_time" content="2018-08-10T03:16:33.000Z">
+<meta property="og:description" content="基于Java的容器注解@Bean@Bean用于标识用于配置和初始化一个由SpringIOC容器管理的新对象的方法，类似于XML文件中的 可以在Spring的@Conponent注解的类中用@Bean注解任何一个方法（仅仅是可以）。通常使用的是@Configuration。 @Bean可以自定义bean的name、init-method、destroy-method。">
+<meta property="og:updated_time" content="2018-09-25T17:04:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="剑指阿里（day12）">
-<meta name="twitter:description" content="最新的学习计划和日更决心学习Spring和Spring MVC框架的过程非常的枯燥，尤其是再刚开始看IOC的时候，竟然看着看着睡着了。所以准备和Java虚拟机方面的知识并行着学习，来保证学习的动力和趣味性（emmmmm…趣味在寻找中…）。 昨天在极客时间app上选择了两门课程来进行学习：  《深入拆解Java虚拟机》    《Java核心技术36讲》   所以所以，我要日更博客啦！！！嗯嗯嗯！！！">
-<meta name="twitter:image" content="http://www.biwenjie.com/images/深入拆解Java虚拟机.jpg">
+<meta name="twitter:title" content="Spring学习（五）">
+<meta name="twitter:description" content="基于Java的容器注解@Bean@Bean用于标识用于配置和初始化一个由SpringIOC容器管理的新对象的方法，类似于XML文件中的 可以在Spring的@Conponent注解的类中用@Bean注解任何一个方法（仅仅是可以）。通常使用的是@Configuration。 @Bean可以自定义bean的name、init-method、destroy-method。">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.biwenjie.com/2018/08/10/2018-08-10-剑指阿里（day12）/"/>
+  <link rel="canonical" href="http://www.biwenjie.com/2018/09/25/2018-09-25-Spring学习（五）/"/>
 
 
 
 
 
-  <title>剑指阿里（day12） | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>Spring学习（五） | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -255,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.biwenjie.com/2018/08/10/2018-08-10-剑指阿里（day12）/">
+    <link itemprop="mainEntityOfPage" href="http://www.biwenjie.com/2018/09/25/2018-09-25-Spring学习（五）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -272,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">剑指阿里（day12）</h1>
+          <h1 class="post-title" itemprop="name headline">Spring学习（五）</h1>
         
 
         <div class="post-meta">
@@ -284,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T11:04:26+08:00">
-                2018-08-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T23:59:03+08:00">
+                2018-09-25
               </time>
             
 
@@ -307,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/剑指阿里/" itemprop="url" rel="index">
-                    <span itemprop="name">剑指阿里</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -338,7 +335,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  137 字
+                  249 字
                 </span>
               
 
@@ -363,18 +360,21 @@
       
 
       
-        <h4 id="最新的学习计划和日更决心"><a href="#最新的学习计划和日更决心" class="headerlink" title="最新的学习计划和日更决心"></a>最新的学习计划和日更决心</h4><p>学习Spring和Spring MVC框架的过程非常的枯燥，尤其是再刚开始看IOC的时候，竟然看着看着睡着了。所以准备和Java虚拟机方面的知识并行着学习，来保证学习的动力和趣味性（emmmmm…趣味在寻找中…）。</p>
-<p>昨天在极客时间app上选择了两门课程来进行学习：</p>
-<ol>
-<li>《深入拆解Java虚拟机》</li>
-</ol>
-<p><img src="/images/深入拆解Java虚拟机.jpg" alt="深入拆解Java虚拟机"></p>
-<ol>
-<li>《Java核心技术36讲》</li>
-</ol>
-<p><img src="/images/Java核心技术36讲.jpg" alt="Java核心技术36讲"></p>
-<p>所以所以，我要日更博客啦！！！嗯嗯嗯！！！</p>
-
+        <h3 id="基于Java的容器注解"><a href="#基于Java的容器注解" class="headerlink" title="基于Java的容器注解"></a>基于Java的容器注解</h3><h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><p>@Bean用于标识用于配置和初始化一个由SpringIOC容器管理的新对象的方法，类似于XML文件中的<bean></bean></p>
+<p>可以在Spring的@Conponent注解的类中用@Bean注解任何一个方法（仅仅是可以）。通常使用的是@Configuration。</p>
+<p>@Bean可以自定义bean的name、init-method、destroy-method。</p>
+<a id="more"></a>
+<p>Store.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface Store &#123;</div><div class="line">	//接口</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>StringStore.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class StringStore implements Store &#123;</div><div class="line">    public void init()&#123;</div><div class="line">        System.out.println(&quot;this is init&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void destory()&#123;</div><div class="line">        System.out.println(&quot;this is destory&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>StoreConfig.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Configuration</div><div class="line">public class StoreConfig &#123;</div><div class="line">    @Bean(name = &quot;store&quot;,initMethod = &quot;init&quot;,destroyMethod = &quot;destory&quot;)</div><div class="line">    public Store stringStore()&#123;</div><div class="line">        return new StringStore();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="使用-ImportResource和-Value注解进行资源文件读取"><a href="#使用-ImportResource和-Value注解进行资源文件读取" class="headerlink" title="使用@ImportResource和@Value注解进行资源文件读取"></a>使用@ImportResource和@Value注解进行资源文件读取</h4><p>StoreConfig.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@Configuration</div><div class="line">@ImportResource(&quot;classpath:/com/test/resource/config.xml&quot;)</div><div class="line">public class StoreConfig &#123;</div><div class="line">    @Value(&quot;$&#123;url&#125;&quot;)</div><div class="line">    private String url;</div><div class="line">    @Value(&quot;$&#123;username&#125;&quot;)</div><div class="line">    private String username;</div><div class="line">    @Value(&quot;$&#123;password&#125;&quot;)</div><div class="line">    private String password;</div><div class="line"></div><div class="line">    @Bean</div><div class="line">    public MyDriverManager myDriverManager()&#123;</div><div class="line">        return new MyDriverManager(url,username,password);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Bean和-Scope"><a href="#Bean和-Scope" class="headerlink" title="@Bean和@Scope"></a>@Bean和@Scope</h4><p>默认@Bean是单例的，可以用@Scope注解设置@Bean的作用域</p>
+<p>@Scope除了value属性外，还有proxyMode属性，表示采用哪一种代理方式</p>
+<h4 id="基于泛型的自动装配"><a href="#基于泛型的自动装配" class="headerlink" title="基于泛型的自动装配"></a>基于泛型的自动装配</h4>
       
     </div>
     
@@ -420,7 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/剑指阿里/" rel="tag"># 剑指阿里</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
           
         </div>
       
@@ -433,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/01/2018-08-01-祝Kitty25岁生日快乐！！！/" rel="next" title="祝Kitty25岁生日快乐！！！">
-                <i class="fa fa-chevron-left"></i> 祝Kitty25岁生日快乐！！！
+              <a href="/2018/09/24/2018-09-24-Spring学习（四）——-Autowired注解/" rel="next" title="Spring学习（四）—— @Autowired注解">
+                <i class="fa fa-chevron-left"></i> Spring学习（四）—— @Autowired注解
               </a>
             
           </div>
@@ -442,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/10/2018-08-10-JVM学习（1）——-Java-代码为何在虚拟机中运行/" rel="prev" title="JVM学习（1）——Java 代码为何在虚拟机中运行">
-                JVM学习（1）——Java 代码为何在虚拟机中运行 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#最新的学习计划和日更决心"><span class="nav-number">1.</span> <span class="nav-text">最新的学习计划和日更决心</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于Java的容器注解"><span class="nav-number">1.</span> <span class="nav-text">基于Java的容器注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean"><span class="nav-number">1.1.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-ImportResource和-Value注解进行资源文件读取"><span class="nav-number">1.2.</span> <span class="nav-text">使用@ImportResource和@Value注解进行资源文件读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean和-Scope"><span class="nav-number">1.3.</span> <span class="nav-text">@Bean和@Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于泛型的自动装配"><span class="nav-number">1.4.</span> <span class="nav-text">基于泛型的自动装配</span></a></li></ol></li></ol></div>
             
 
           </div>
