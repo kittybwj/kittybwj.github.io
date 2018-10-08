@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
 <meta property="og:description" content="AOP基本概念和特点什么是AOPAOP：Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。 主要的功能是：日志记录，性能统计，安全控制，事务处理，异常处理等等。 切面很多不同的模块都要实现同一个功能，所以我们可以通过切面的方式，只要在某一处实现这个功能即可，默认的当运行任何一个子模块时，都会自动的通过预">
 <meta property="og:image" content="http://www.biwenjie.com/images/切面.png">
-<meta property="og:updated_time" content="2018-09-26T17:53:50.000Z">
+<meta property="og:updated_time" content="2018-10-08T02:36:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring学习（六）—— AOP">
 <meta name="twitter:description" content="AOP基本概念和特点什么是AOPAOP：Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。 主要的功能是：日志记录，性能统计，安全控制，事务处理，异常处理等等。 切面很多不同的模块都要实现同一个功能，所以我们可以通过切面的方式，只要在某一处实现这个功能即可，默认的当运行任何一个子模块时，都会自动的通过预">
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  634 字
+                  713 字
                 </span>
               
 
@@ -367,6 +367,7 @@
 <h4 id="切面"><a href="#切面" class="headerlink" title="切面"></a>切面</h4><p>很多不同的模块都要实现同一个功能，所以我们可以通过切面的方式，只要在某一处实现这个功能即可，默认的当运行任何一个子模块时，都会自动的通过预编译或运行期动态代理的方式去执行这个功能。</p>
 <p>切面是和功能垂直的，业务功能是横向的，切面是横切于各个功能之上。</p>
 <p><img src="/images/切面.png" alt="切面"></p>
+<a id="more"></a>
 <h4 id="AOP实现方式"><a href="#AOP实现方式" class="headerlink" title="AOP实现方式"></a>AOP实现方式</h4><ul>
 <li>预编译 - AspectJ</li>
 <li>运行期动态代理（JDK动态代理、CGLib动态代理）-SpringAOP、JbossAOP</li>
@@ -394,6 +395,10 @@
 <li>纯java实现</li>
 <li>不是为了提供最完整的AOP实现，而是侧重于提供一种AOP实现和Spring IoC容器的整合</li>
 <li>Spring AOP不会与AspectJ竞争，从而提供综合全面的AOP解决方案</li>
+</ul>
+<h4 id="有接口和无接口的Spring-AOP实现的区别"><a href="#有接口和无接口的Spring-AOP实现的区别" class="headerlink" title="有接口和无接口的Spring AOP实现的区别"></a>有接口和无接口的Spring AOP实现的区别</h4><ul>
+<li>Spring AOP默认使用标准的Java SE动态代理作为AOP代理，这使得任何接口（或接口集）都可以被代理</li>
+<li>Spring AOP中也可以使用CGLIB代理（如果一个业务对象并没有实现任何一个接口）</li>
 </ul>
 
       
@@ -615,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP基本概念和特点"><span class="nav-number">1.</span> <span class="nav-text">AOP基本概念和特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是AOP"><span class="nav-number">1.1.</span> <span class="nav-text">什么是AOP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切面"><span class="nav-number">1.2.</span> <span class="nav-text">切面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP实现方式"><span class="nav-number">1.3.</span> <span class="nav-text">AOP实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP的重要概念"><span class="nav-number">1.4.</span> <span class="nav-text">AOP的重要概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring框架中AOP的用途"><span class="nav-number">1.5.</span> <span class="nav-text">Spring框架中AOP的用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring中的AOP实现"><span class="nav-number">1.6.</span> <span class="nav-text">Spring中的AOP实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP基本概念和特点"><span class="nav-number">1.</span> <span class="nav-text">AOP基本概念和特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是AOP"><span class="nav-number">1.1.</span> <span class="nav-text">什么是AOP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切面"><span class="nav-number">1.2.</span> <span class="nav-text">切面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP实现方式"><span class="nav-number">1.3.</span> <span class="nav-text">AOP实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP的重要概念"><span class="nav-number">1.4.</span> <span class="nav-text">AOP的重要概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring框架中AOP的用途"><span class="nav-number">1.5.</span> <span class="nav-text">Spring框架中AOP的用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring中的AOP实现"><span class="nav-number">1.6.</span> <span class="nav-text">Spring中的AOP实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有接口和无接口的Spring-AOP实现的区别"><span class="nav-number">1.7.</span> <span class="nav-text">有接口和无接口的Spring AOP实现的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
