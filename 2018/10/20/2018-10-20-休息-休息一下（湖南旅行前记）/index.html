@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,多线程," />
+  <meta name="keywords" content="旅行," />
 
 
 
@@ -79,21 +79,17 @@
 
 
 
-<meta name="description" content="进程与线程进程进程是程序（任务）的执行过程，是动态性的。 持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。 线程线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。 同一进程之中可以有多个线程。 线程共享进程的资源。 进程与线程的区别和联系线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程">
-<meta name="keywords" content="Java,多线程">
+<meta name="description" content="要去旅行啦明天就要出去旅行啦，虽然要赶6点的早班飞机，但是生物钟强大且心情激动的我仍无法早睡。加之又要一周不能更新博客了，不妨上来写上一篇闲文，记录一下最近的心情。 每年旅行是我从大学开始立下的flag，大概是因为只要有钱有闲有心情就能轻易达成，所以成为了我为数不多屹立不倒的小目标。我是那种有个小盼头就能激励自己好一段时间的人，所以旅行前两个月的期待和准备加上旅行后两个月的回忆，四舍五入能支撑我开">
+<meta name="keywords" content="旅行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java多线程（一）—— 多线程基础">
-<meta property="og:url" content="http://www.biwenjie.com/2018/06/19/2018-06-19-Java多线程（一）——-多线程基础/index.html">
+<meta property="og:title" content="休息~休息一下（湖南旅行前记）">
+<meta property="og:url" content="http://www.biwenjie.com/2018/10/20/2018-10-20-休息-休息一下（湖南旅行前记）/index.html">
 <meta property="og:site_name" content="超级无敌美少女Kitty的搬砖日常">
-<meta property="og:description" content="进程与线程进程进程是程序（任务）的执行过程，是动态性的。 持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。 线程线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。 同一进程之中可以有多个线程。 线程共享进程的资源。 进程与线程的区别和联系线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程">
-<meta property="og:image" content="http://www.biwenjie.com/images/Thread方法.png">
-<meta property="og:image" content="http://www.biwenjie.com/images/创建线程的两种方式.png">
-<meta property="og:image" content="http://www.biwenjie.com/images/线程的生命周期.png">
-<meta property="og:updated_time" content="2018-06-19T15:31:57.000Z">
+<meta property="og:description" content="要去旅行啦明天就要出去旅行啦，虽然要赶6点的早班飞机，但是生物钟强大且心情激动的我仍无法早睡。加之又要一周不能更新博客了，不妨上来写上一篇闲文，记录一下最近的心情。 每年旅行是我从大学开始立下的flag，大概是因为只要有钱有闲有心情就能轻易达成，所以成为了我为数不多屹立不倒的小目标。我是那种有个小盼头就能激励自己好一段时间的人，所以旅行前两个月的期待和准备加上旅行后两个月的回忆，四舍五入能支撑我开">
+<meta property="og:updated_time" content="2018-10-20T16:25:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java多线程（一）—— 多线程基础">
-<meta name="twitter:description" content="进程与线程进程进程是程序（任务）的执行过程，是动态性的。 持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。 线程线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。 同一进程之中可以有多个线程。 线程共享进程的资源。 进程与线程的区别和联系线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程">
-<meta name="twitter:image" content="http://www.biwenjie.com/images/Thread方法.png">
+<meta name="twitter:title" content="休息~休息一下（湖南旅行前记）">
+<meta name="twitter:description" content="要去旅行啦明天就要出去旅行啦，虽然要赶6点的早班飞机，但是生物钟强大且心情激动的我仍无法早睡。加之又要一周不能更新博客了，不妨上来写上一篇闲文，记录一下最近的心情。 每年旅行是我从大学开始立下的flag，大概是因为只要有钱有闲有心情就能轻易达成，所以成为了我为数不多屹立不倒的小目标。我是那种有个小盼头就能激励自己好一段时间的人，所以旅行前两个月的期待和准备加上旅行后两个月的回忆，四舍五入能支撑我开">
 
 
 
@@ -123,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.biwenjie.com/2018/06/19/2018-06-19-Java多线程（一）——-多线程基础/"/>
+  <link rel="canonical" href="http://www.biwenjie.com/2018/10/20/2018-10-20-休息-休息一下（湖南旅行前记）/"/>
 
 
 
 
 
-  <title>Java多线程（一）—— 多线程基础 | 超级无敌美少女Kitty的搬砖日常</title>
+  <title>休息~休息一下（湖南旅行前记） | 超级无敌美少女Kitty的搬砖日常</title>
   
 
 
@@ -256,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.biwenjie.com/2018/06/19/2018-06-19-Java多线程（一）——-多线程基础/">
+    <link itemprop="mainEntityOfPage" href="http://www.biwenjie.com/2018/10/20/2018-10-20-休息-休息一下（湖南旅行前记）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -273,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java多线程（一）—— 多线程基础</h1>
+          <h1 class="post-title" itemprop="name headline">休息~休息一下（湖南旅行前记）</h1>
         
 
         <div class="post-meta">
@@ -285,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T23:24:59+08:00">
-                2018-06-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T23:36:17+08:00">
+                2018-10-20
               </time>
             
 
@@ -295,28 +291,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -339,7 +313,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  913 字
+                  854 字
                 </span>
               
 
@@ -364,43 +338,14 @@
       
 
       
-        <h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><h5 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h5><p>进程是程序（任务）的执行过程，是动态性的。</p>
-<p>持有资源（共享内存、共享文件）和线程。进程是资源和线程的载体。</p>
-<h5 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h5><p>线程是操作系统能够进行运算调度的最小单位，它被包含在进程之中，是进程中的实际运作单位。</p>
-<p>同一进程之中可以有多个线程。</p>
-<p>线程共享进程的资源。</p>
-<h5 id="进程与线程的区别和联系"><a href="#进程与线程的区别和联系" class="headerlink" title="进程与线程的区别和联系"></a>进程与线程的区别和联系</h5><p>线程是进程的子集，一个进程可以有很多线程，每条线程并行执行不同的任务。不同的进程使用不同的内存空间，而所有的线程共享一片相同的内存空间。 </p>
-<h5 id="线程的交互"><a href="#线程的交互" class="headerlink" title="线程的交互"></a>线程的交互</h5><p>互斥与同步</p>
-<a id="more"></a>
-<h4 id="Java对线程的支持与实现"><a href="#Java对线程的支持与实现" class="headerlink" title="Java对线程的支持与实现"></a>Java对线程的支持与实现</h4><h5 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h5><p>Java对线程的支持主要体现在Thread类和Runnable接口上，它们都继承于java.lang包。它们有个共同的方法run()方法，这个方法提供了线程实际工作和执行的代码。　</p>
-<p>java.lang.Thread 类的实例就是一个线程但是它需要调用java.lang.Runnable接口来执行，由于线程类本身就是调用的Runnable接口所以你可以继承java.lang.Thread 类或者直接调用Runnable接口来重写run()方法实现线程。 </p>
-<p><img src="/images/Thread方法.png" alt="Thread方法"></p>
-<h5 id="Thread类和Runnable接口比较"><a href="#Thread类和Runnable接口比较" class="headerlink" title="Thread类和Runnable接口比较"></a>Thread类和Runnable接口比较</h5><p><img src="/images/创建线程的两种方式.png" alt="创建线程的两种方式"></p>
-<ul>
-<li>Runnable方式可以避免Thread方式由于Java单继承特性带来的缺陷（在Java中一个子类可以实现多个接口，但是只能继承一个父类）</li>
-<li>Runnable的代码可以被多个线程（Thread实例）共享，适合于多个线程处理同一个资源的情况。</li>
-</ul>
-<h5 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h5><p><img src="/images/线程的生命周期.png" alt="线程的生命周期"></p>
-<p>创建：新建一个线程对象，如 Thread thread = new Thread();</p>
-<p>就绪状态：创建了线程对象后，调用了线程的start()方法。（注：此时线程只是进入了线程队列，等待获取CPU服务，具备了运行的条件，但并不一定已经开始运行了）</p>
-<p>运行状态：处于就绪状态的线程，一旦获取了CPU资源，便进入到运行状态，开始执行run()方法里面的逻辑。</p>
-<p>终止：线程的run()方法执行完毕，或者线程调用了stop()方法，线程便进入中止状态。（注：目前stop()方法已经被摒弃了）</p>
-<p>阻塞状态：一个正在执行的线程在某些情况下，由于某种原因而暂时让出了CPU资源，暂停了自己的执行，则进入了阻塞状态，如调用了sleep()方法。</p>
-<h5 id="用户线程和守护线程"><a href="#用户线程和守护线程" class="headerlink" title="用户线程和守护线程"></a>用户线程和守护线程</h5><p>用户线程：</p>
-<ul>
-<li>运行在前台，执行具体任务</li>
-<li>程序的主线程、连接网络的子线程等都是用户线程</li>
-</ul>
-<p>守护线程：</p>
-<ul>
-<li>运行在后台，为其他前台线程服务</li>
-<li>特点：一旦所有用户线程都结束，守护线程会随JVM一起结束工作</li>
-<li>应用：数据库连接池中的监测线程、JVM虚拟机启动后的监测线程</li>
-<li>最常见的守护线程：垃圾回收线程</li>
-<li>如何设置守护线程：可以通过调用Thread类的setDaemon(true)方法来设置当前的线程为守护线程。</li>
-<li>注意事项：</li>
-<li>1、setDaemon(true)必须在start()方法之前调用，否则会抛出IllegalThreadStateException 异常。2、在守护线程中产生的新线程也为守护线程。3、不是所有的任务都可以分配给守护线程来执行，比如读写操作或者计算逻辑（因为守护线程会在所有用户线程结束后也结束工作）</li>
-</ul>
+        <h4 id="要去旅行啦"><a href="#要去旅行啦" class="headerlink" title="要去旅行啦"></a>要去旅行啦</h4><p>明天就要出去旅行啦，虽然要赶6点的早班飞机，但是生物钟强大且心情激动的我仍无法早睡。加之又要一周不能更新博客了，不妨上来写上一篇闲文，记录一下最近的心情。</p>
+<p>每年旅行是我从大学开始立下的flag，大概是因为只要有钱有闲有心情就能轻易达成，所以成为了我为数不多屹立不倒的小目标。我是那种有个小盼头就能激励自己好一段时间的人，所以旅行前两个月的期待和准备加上旅行后两个月的回忆，四舍五入能支撑我开心大半年。那么一年两次旅行，我的一整年都是开心的。</p>
+<p>对于旅行目的地的选择，我一直本着现在赚的少时间也少，就先由远到近来玩的理念，所以一直都在国内和中国附近转悠，到现在也没出过亚洲。但是每次旅行中或是美景或是人，都给我留下来深刻而美丽的印象。</p>
+<p>旅行中的旅伴，有多年的同学朋友，有恋人，也有父母，出乎意料的每次都很和谐愉快。大概是狮子座的我希望拥有大比例的选择权，恰好旅伴们多多少少有些选择困难症吧。</p>
+<p>这次旅行是去期盼已久的湖南~要去长沙品尝各种美食小吃，打卡“停车坐爱枫林晚，霜叶红于二月花”的岳麓山爱晚亭和“橘子洲头，看满山红遍，层林尽染”的橘子洲；要去张家界登高看“缩小的仙境，放大的盆景”的武陵源；要去凤凰古城感受白天安静悠闲和夜晚酒吧林立、繁华喧闹的强烈对比。另外这次的旅伴是成为认识十多年却从未有机会一起旅行的好朋友，一切都那么值得期待。</p>
+<p>我并不是个向往诗和远方的文艺青年，但我十分同意人要“读万卷书，行万里路”这个观点。旅行带给我的不仅仅是心情上的放松和愉悦，还有旅途中所见所闻引发的思考。要说读书是从书中读到外面的世界和他人的生活与体悟，那旅行就是切切实实的去感受外面的世界和别人的生活。说出去看看山看看水尝尝美食，就能变得心胸开阔包容万物，那绝对是矫情和毒鸡汤。但是平常生活中小小圈子的我们，遇到的人和事有很大的局限性，而在旅行中，会遇到的形形色色的人和各种无法预期的事情，这些带给你的冲击和感受是强大而独特的。就如读书般，读过的书和走过的路，会慢慢影响你，体现在你的想法和行为中。</p>
+<p>太晚啦再不睡就要到起床的时间了，剩下的等回来再写吧！</p>
+<p>最后，留下一句最近喜欢的看的《奇葩说》里高晓松的话，“一生温暖纯良，不舍爱与自由”，如何生活是自己所选择的，愿我自己能努力美好的生活。</p>
 
       
     </div>
@@ -447,9 +392,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+            <a href="/tags/旅行/" rel="tag"># 旅行</a>
           
         </div>
       
@@ -462,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/11/2018-06-11-剑指阿里（day7）/" rel="next" title="剑指阿里（day7）">
-                <i class="fa fa-chevron-left"></i> 剑指阿里（day7）
+              <a href="/2018/10/11/2018-10-11-Spring学习（七）——AOP小demo/" rel="next" title="Spring学习（七）——AOP小demo">
+                <i class="fa fa-chevron-left"></i> Spring学习（七）——AOP小demo
               </a>
             
           </div>
@@ -471,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/19/2018-06-19-剑指阿里（day8）/" rel="prev" title="剑指阿里（day8）">
-                剑指阿里（day8） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -621,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程与线程"><span class="nav-number">1.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程"><span class="nav-number">1.1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程"><span class="nav-number">1.2.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进程与线程的区别和联系"><span class="nav-number">1.3.</span> <span class="nav-text">进程与线程的区别和联系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的交互"><span class="nav-number">1.4.</span> <span class="nav-text">线程的交互</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java对线程的支持与实现"><span class="nav-number">2.</span> <span class="nav-text">Java对线程的支持与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的实现"><span class="nav-number">2.1.</span> <span class="nav-text">线程的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Thread类和Runnable接口比较"><span class="nav-number">2.2.</span> <span class="nav-text">Thread类和Runnable接口比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程的生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">线程的生命周期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户线程和守护线程"><span class="nav-number">2.4.</span> <span class="nav-text">用户线程和守护线程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#要去旅行啦"><span class="nav-number">1.</span> <span class="nav-text">要去旅行啦</span></a></li></ol></div>
             
 
           </div>
